@@ -1,0 +1,13 @@
+{
+  "singleQuote": true,
+  "bracketSpacing": true,
+  "trailingComma": "none",
+  "bracketSameLine": true,
+  "printWidth": 120,
+  "semi": false,
+  "overrides": [
+    {
+      "files": ".prettierrc"
+    }
+  ]
+}

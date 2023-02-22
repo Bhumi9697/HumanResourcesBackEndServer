@@ -1,0 +1,6 @@
+[
+  {"companyId":"company1","companyName":"Awesome Company","companyOwnerId":"owner@company1.com","companySize":35,"state":"CA"},
+  {"companyId":"company2","companyName":"Great Company","companyOwnerId":"owner@company2.com","companySize":20,"state":"DE"},
+  {"companyId":"company3","companyName":"Good Company","companyOwnerId":"owner@company3.com","companySize":45,"state":"MN"},
+  {"companyId":"company4","companyName":"Sweet Company","companyOwnerId":"owner@oyea.app","companySize":12,"state":"NY"}
+]

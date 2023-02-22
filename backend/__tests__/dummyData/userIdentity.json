@@ -1,0 +1,19 @@
+[
+  {"email":"employee1@company4.com","userId":"employee1@comppany4.com","companyId":"company4","first":"John","last":"Doe","userRole":"employee"},
+  {"email":"employee2@company4.com","userId":"employee2@comppany4.com","companyId":"company4","first":"John","last":"Doe","userRole":"employee"},
+  {"email":"employee3@company4.com","userId":"employee3@company4.com","companyId":"company4","first":"John","last":"Doe","userRole":"employee"},
+  {"email":"employee4@company4.com","userId":"employee4@company4.com","companyId":"company4","first":"John","last":"Doe","userRole":"employee"},
+  {"email":"employee5@company4.com","userId":"employee5@company4.com","companyId":"company4","first":"John","last":"Doe","userRole":"employee"},
+  {"email":"hr@oyea.app","userId":"hr@oyea.app","companyId":"company4","first":"human","last":"resources","userRole":"hr"},
+  {"email":"owner@oyea.app","userId":"owner@oyea.app","companyId":"company4","first":"human","last":"resources","userRole":"owner"},
+  {"email":"employee@oyea.app","userId":"employee@oyea.app","companyId":"company4","first":"Employee","last":"Smith","userRole":"employee"},
+
+
+  {"userId":"accountManager1@cavness.com","email":"accountManager1@cavness.com","companyId":"cavness","first":"John","last":"Doe","userRole":"accountmanager"},
+  {"userId":"accountManager2@cavness.com","email":"accountManager2@cavness.com","companyId":"cavness","first":"John","last":"Doe","userRole":"accountmanager"},
+  {"userId":"superadmin@cavness.com","email":"superadmin@cavness.com","companyId":"cavness","first":"John","last":"Doe","userRole":"superadmin"},
+  {"userId":"superadmin@oyea.app","email":"superadmin@oyea.app","companyId":"cavness","first":"Super","last":"Admin","userRole":"superadmin"},
+  {"userId":"accountmanager@oyea.app","email":"accountmanager@oyea.app","companyId":"cavness","first":"Account","last":"Manager","userRole":"accountmanager"}
+
+
+]

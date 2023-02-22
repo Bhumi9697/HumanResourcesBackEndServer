@@ -1,0 +1,82 @@
+export default
+`enum GenderEnum {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum MaritalStatusEnum {
+  SINGLE
+  MARRIED
+  DIVORCED
+  WIDOWED
+  OTHER
+}
+
+enum UserStatusEnum {
+  ACTIVE
+  INACTIVE
+}
+
+enum CompanyStatusEnum {
+  ACTIVE
+  INACTIVE
+}
+
+enum StatusEnum {
+  ACTIVE
+  INACTIVE
+}
+
+enum UserRoleEnum {
+  OWNER
+  HR
+  EMPLOYEE
+  SUPERADMIN
+  ACCOUNTMANAGER
+}
+
+enum DocumentTypeEnum {
+  CITY
+  COMPANY
+  NATIONAL
+  STATE
+}
+
+enum EmployeeDocumentTypeEnum {
+  IDPROOF
+  EMPLOYEEHANDBOOK
+  I9FORM
+  HRPOLICY
+}
+
+enum DocumentCategoryEnum {
+  LABORPOSTER
+  HRLAWS
+  EMPLOYEEHANDBOOK
+  HRPOLICY
+  JOBDESCRIPTION
+  ONBOARDING
+}
+
+enum ActionTypeEnum {
+  USERDOCUMENTADDED
+  UPLOADNEEDED
+  USERSTATUSCHANGE
+  USERDOCUMENTDELETED
+  EMPLOYEEADDED
+  DOCUMENTDELETED
+}
+
+enum EmploymentStatusEnum {
+  FMLA
+  MATERNITYLEAVE
+  PATERNITYLEAVE
+  LOA
+  VACATION
+  SUSPENDED
+  TERMINATED
+  ACTIVE
+}
+
+`;

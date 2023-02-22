@@ -1,0 +1,167 @@
+service: cavness-api
+
+# Create an optimized package for our functions
+package:
+  individually: true
+
+plugins:
+  - serverless-bundle # Package our functions with Webpack
+  - serverless-dynamodb-local
+  - serverless-offline
+  - serverless-dotenv-plugin
+#  - serverless-dotenv-plugin # Load .env as environment variables
+custom:
+  #This disables serverless.com logging services
+  enterprise:
+    collectLambdaLogs: false
+  # Our stage is based on what is passed in when running serverless
+  # commands. Or fallsback to what we have set in the provider section.
+  stage: ${opt:stage, self:provider.stage}
+  # Set the table name here so we can use it while testing locally
+  tableName: ${self:custom.stage}
+  bucket: ${self:custom.stage}-bucket
+  STAGE: ${opt:stage, 'dev'}
+
+  dynamodb:
+  # If you only want to use DynamoDB Local in some stages, declare them here
+    stages:
+      - dev
+    start:
+      seed: true
+      port: 8000
+      inMemory: true
+      heapInitial: 200m
+      heapMax: 1g
+      migrate: false
+      convertEmptyValues: true
+      online: false
+      region: us-east-1
+#    seed:
+#      domain:
+#        sources:
+#          - table: ${self:custom.tableName}-UserIdentity
+#            sources: [./tests/fakedata/userIdentity.json]
+#          - table: ${self:custom.tableName}-User
+#            sources: [./tests/fakedata/userIdentity.json]
+#          - table: ${self:custom.tableName}-Company
+#            sources: [./tests/fakedata/companies.json]
+#          - table: ${self:custom.tableName}-CompanyLocation
+#            sources: [./tests/fakedata/CompanyLocations.json]
+#          - table: ${self:custom.tableName}-CavnessDocument
+#            sources: [./tests/fakedata/CavnessDocuments.json]
+#          - table: ${self:custom.tableName}-CavnessDocumentAccess
+#            sources: [./tests/fakedata/documentAccess.json]
+    # Uncomment only if you already have a DynamoDB running locally
+    # noStart: true
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: dev
+  region: us-east-1
+
+  # These environment variables are made available to our functions
+  # under process.env.
+  environment:
+    stage: ${self:custom.stage, 'dev'}
+    tableName: ${self:custom.tableName}
+
+    userPoolId:
+      Ref: CognitoUserPool2
+    userPoolClientId:
+      Ref: CognitoUserPoolClient
+    region: ${self:provider.region}
+    profilePhotosBucket:
+      Ref: ProfilePhotosBucket
+    publicDocumentsBucket:
+      Ref: PublicDocumentsBucket
+    privateDocumentsBucket:
+      Ref: PrivateDocumentsBucket
+
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:BatchGetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      # Restrict our IAM role permissions to
+      # the specific table for the stage
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*"
+
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:GetObject
+        - s3:ListBucket
+        - s3:ListBucketVersions
+      Resource:
+        - 'arn:aws:s3:::${self:custom.bucket}-profile-photos'
+        - 'arn:aws:s3:::${self:custom.bucket}-profile-photos/*'
+
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:GetObject
+        - s3:ListBucket
+        - s3:ListBucketVersions
+      Resource:
+        - 'arn:aws:s3:::${self:custom.bucket}-public-documents'
+        - 'arn:aws:s3:::${self:custom.bucket}-public-documents/*'
+
+    - Effect: Allow
+      Action:
+        - s3:PutObject
+        - s3:GetObject
+        - s3:ListBucket
+        - s3:ListBucketVersions
+      Resource:
+        - 'arn:aws:s3:::${self:custom.bucket}-private-documents'
+        - 'arn:aws:s3:::${self:custom.bucket}-private-documents/*'
+
+    - Effect: Allow
+      Action:
+        - cognito-idp:AdminGetUser
+        - cognito-idp:AdminCreateUser
+        - cognito-idp:AdminEnableUser
+        - cognito-idp:AdminDisableUser
+      Resource: !GetAtt 'CognitoUserPool2.Arn'
+
+functions:
+  # Defines an HTTP API endpoint that calls the main function in create.js
+  # - path: url path is /notes
+  # - method: POST request
+  # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
+  #     domain api call
+  # - authorizer: authenticate using the AWS IAM role
+  graphql:
+    handler: graphql/handler.graphqlHandler
+    events:
+    - http:
+        path: /graphql
+        method: any
+        cors: true
+
+  customMessage:
+    handler: auth/customMessage.handler
+    events:
+      - cognitoUserPool:
+          pool: ${self:custom.stage}-user-pool
+          trigger: CustomMessage
+          existing: true
+  auth:
+    handler: auth/customAuthorizor.authorize
+# Create our resources with separate CloudFormation templates
+resources:
+  # API Gateway Errors
+  - ${file(resources/api-gateway-errors.yml)}
+  # DynamoDB
+  - ${file(resources/dynamodb-table.yml)}
+  # S3
+  - ${file(resources/s3-bucket.yml)}
+  # Cognito
+  - ${file(resources/cognito-user-pool.yml)}
+#  - ${file(resources/cognito-identity-pool.yml)}

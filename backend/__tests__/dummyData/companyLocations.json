@@ -1,0 +1,9 @@
+[
+  {"companyId":"company1","locationId":"location1","state":"California","city":"Los Angeles"},
+  {"companyId":"company2","locationId":"location1","state":"Illinois","city":"Chicago"},
+  {"companyId":"company2","locationId":"location2","state":"Oklahoma","city":"Oklahoma City"},
+  {"companyId":"company3","locationId":"location1","state":"Texas","city":"Austin"},
+  {"companyId":"company4","locationId":"location1","state":"Colorado","city":"Denver"},
+  {"companyId":"company5","locationId":"location1","state":"Minnesota","city":"Minneapolis"}
+
+]

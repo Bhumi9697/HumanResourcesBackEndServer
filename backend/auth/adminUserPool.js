@@ -4,8 +4,8 @@ const CLIENTID = process.env.IS_OFFLINE ? process.env.localPoolClient : process.
 
 
 AWS.config.update({region:'us-east-1'});
-global.fetch = require('node-fetch').default;
-const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
+//global.fetch = require('node-fetch').default;
+import { CognitoUserAttribute } from 'amazon-cognito-identity-js'
 
 export async function addUserToPool(userProps){
   var params = {
@@ -103,7 +103,7 @@ export async function userSignUp(userProps){
     ClientId: CLIENTID, // Your client id here
   };
 
-  var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+  var userPool = new CognitoUserPool(poolData);
   var cognitoAttributes = [];
   var attributeList = [
     { Name: 'family_name',Value: userProps.first },
@@ -111,7 +111,7 @@ export async function userSignUp(userProps){
   ];
 
   attributeList.map(att => {
-    cognitoAttributes.push(new AmazonCognitoIdentity.CognitoUserAttribute(att));
+    cognitoAttributes.push(new CognitoUserAttribute(att));
   });
 
   let result = new Promise( (resolve,reject) => {

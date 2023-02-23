@@ -5,7 +5,7 @@ import  * as userIdDb from '../dynamo/UserIdentity.js';
 import { createComplexityLimitRule } from 'graphql-validation-complexity';
 import {authorizeToken} from '../auth/customAuthorizor.js';
 import gql from 'graphql-tag';
-import accessControl from '../libs/accessControl';
+import accessControl from '../libs/accessControl.js';
 
 const server = new ApolloServer({
   introspection:true,
@@ -42,10 +42,17 @@ async function authenticate(AuthorizationHeader){
   return token;
 }
 
-exports.graphqlHandler = (event, context, callback) => {
-  let ignoreAuthentication = false;
-  let request = JSON.parse(event.body);
+////////////////////////////////////////////////////////////////
+//
+// GraphQL handler
+//
+////////////////////////////////////////////////////////////////
+export const graphqlHandler = (event, context, callback) => {
+  let ignoreAuthentication = true;
+//console.log(event.body);
 
+  let request = JSON.parse(event.body);
+//console.log(request);
   if(request && request.query){
   let graph = gql`${request.query}`;
 

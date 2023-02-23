@@ -1,7 +1,7 @@
 //import uuid from 'uuid/v1';
-import * as db from './dynamo';
-import accessControl from '../libs/accessControl';
-import * as ActivityHelper from '../libs/ActivityHelper';
+import * as db from './dynamo.js';
+import accessControl from '../libs/accessControl.js';
+import * as ActivityHelper from '../libs/ActivityHelper.js';
 
 const TableName = process.env.stage + '-DocumentAccess';
 

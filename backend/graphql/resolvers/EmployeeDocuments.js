@@ -1,11 +1,11 @@
 //import * as dbUsers from '../../dynamo/users';
-import uuid from 'uuid/v1';
+import uuid from 'uuid/v1.js';
 //import { AuthenticationError } from 'apollo-server-lambda';
-import * as dbEmployeeDocuments from '../../dynamo/EmployeeDocuments';
-import * as dbDocumentCategories from '../../dynamo/DocumentCategories';
+import * as dbEmployeeDocuments from '../../dynamo/EmployeeDocuments.js';
+import * as dbDocumentCategories from '../../dynamo/DocumentCategories.js';
 import * as employeeFileHandler from '../../libs/employeeFileHandler.js';
-import accessControl from '../../libs/accessControl';
-import * as ActivityHelper from '../../libs/ActivityHelper';
+import accessControl from '../../libs/accessControl.js';
+import * as ActivityHelper from '../../libs/ActivityHelper.js';
 
 //DB Methods:
 //listDocuments()

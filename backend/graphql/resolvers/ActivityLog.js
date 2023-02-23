@@ -1,7 +1,7 @@
 //import * as dbUsers from '../../dynamo/users';
 // import uuid from 'uuid/v1';
 //import { AuthenticationError } from 'apollo-server-lambda';
-import * as dbActivityLog from '../../dynamo/ActivityLog';
+import * as dbActivityLog from '../../dynamo/ActivityLog.js';
 // import accessControl from '../../libs/accessControl';
 
 

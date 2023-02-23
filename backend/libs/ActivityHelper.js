@@ -1,7 +1,7 @@
-import * as dbActivityLog from '../dynamo/ActivityLog';
-import * as dbUsers from '../dynamo/Users';
-import uuid from 'uuid/v1';
-import * as emailHelper from './emailHelper';
+import * as dbActivityLog from '../dynamo/ActivityLog.js';
+import * as dbUsers from '../dynamo/Users.js';
+import uuid from 'uuid/v1.js';
+import * as emailHelper from './emailHelper.js';
 // ActionTypeEnum:{
 //   USERDOCUMENTADDED:'userdocumentadded',
 //   UPLOADNEEDED:'uploadneeded',

@@ -1,14 +1,14 @@
 import {AuthenticationError, UserInputError } from 'apollo-server-lambda';
-import uuid from 'uuid/v1';
-import * as dbUsers from '../../dynamo/Users';
-import * as dbUserIdentity from '../../dynamo/UserIdentity';
+import uuid from 'uuid/v1.js';
+import * as dbUsers from '../../dynamo/Users.js';
+import * as dbUserIdentity from '../../dynamo/UserIdentity.js';
 //import * as dbUserDocuments from '../../dynamo/UserDocuments';
-import * as dbCompanyLocations from '../../dynamo/CompanyLocation';
-import * as dbCompanies from '../../dynamo/Companies';
-import * as userPool from '../../auth/adminUserPool';
-import * as fileHandler from '../../libs/fileHandler';
-import * as ActivityHelper from '../../libs/ActivityHelper';
-import accessControl from '../../libs/accessControl';
+import * as dbCompanyLocations from '../../dynamo/CompanyLocation.js';
+import * as dbCompanies from '../../dynamo/Companies.js';
+import * as userPool from '../../auth/adminUserPool.js';
+import * as fileHandler from '../../libs/fileHandler.js';
+import * as ActivityHelper from '../../libs/ActivityHelper.js';
+import accessControl from '../../libs/accessControl.js';
 
 export default {
   Query: {

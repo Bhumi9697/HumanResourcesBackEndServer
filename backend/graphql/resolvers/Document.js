@@ -1,13 +1,13 @@
 //import * as dbUsers from '../../dynamo/users';
-import uuid from 'uuid/v1';
+import uuid from 'uuid/v1.js';
 import { AuthenticationError } from 'apollo-server-lambda';
-import * as dbDocuments from '../../dynamo/CavnessDocuments';
-import * as dbDocumentAccess from '../../dynamo/DocumentAccess';
-import * as dbDocumentCategories from '../../dynamo/DocumentCategories';
-import * as dbCompanyLocations from '../../dynamo/CompanyLocation';
+import * as dbDocuments from '../../dynamo/CavnessDocuments.js';
+import * as dbDocumentAccess from '../../dynamo/DocumentAccess.js';
+import * as dbDocumentCategories from '../../dynamo/DocumentCategories.js';
+import * as dbCompanyLocations from '../../dynamo/CompanyLocation.js';
 import * as fileHandler from '../../libs/fileHandler.js';
-import accessControl from '../../libs/accessControl';
-import * as ActivityHelper from '../../libs/ActivityHelper';
+import accessControl from '../../libs/accessControl.js';
+import * as ActivityHelper from '../../libs/ActivityHelper.js';
 export default {
   Mutation: {
     uploadProfilePicture: (_,args) => {

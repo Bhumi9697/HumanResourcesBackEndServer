@@ -1,5 +1,5 @@
-import { putObjectPresignedUrl, getObjectPresignedUrl, postObjectPresignedUrl } from './fileUtils';
-import * as dbEmployeeDocs from '../dynamo/EmployeeDocuments';
+import { putObjectPresignedUrl, getObjectPresignedUrl, postObjectPresignedUrl } from './fileUtils.js';
+import * as dbEmployeeDocs from '../dynamo/EmployeeDocuments.js';
 const DocumentsBucket = process.env.IS_OFFLINE ?  'dev-bucket-private-documents' : process.env.privateDocumentsBucket;
 
 

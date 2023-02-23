@@ -1,5 +1,5 @@
-import * as db from './dynamo';
-import accessControl from '../libs/accessControl';
+import * as db from './dynamo.js';
+import accessControl from '../libs/accessControl.js';
 const TableName = process.env.stage + '-DocumentTable';
 
 export function listDocuments() {

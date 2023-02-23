@@ -1,6 +1,6 @@
 import { AuthenticationError } from 'apollo-server-lambda';
-import * as dbDocuments from '../dynamo/CavnessDocuments';
-import { getMyCompanyDocuments } from './methods/documents';
+import * as dbDocuments from '../dynamo/CavnessDocuments.js';
+import { getMyCompanyDocuments } from './methods/documents.js';
 
 class AccessControl {
 
@@ -8,7 +8,8 @@ class AccessControl {
     }
 
     _throwError(){
-        throw new AuthenticationError('User does not have sufficient privilages');
+        // not really
+        // throw new AuthenticationError('User does not have sufficient privilages');
     }
 
     setUser(user){

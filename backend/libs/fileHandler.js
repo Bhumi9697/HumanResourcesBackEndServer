@@ -1,7 +1,7 @@
-import { putObjectPresignedUrl, getObjectPresignedUrl, postObjectPresignedUrl } from './fileUtils';
-import * as dbCompanies from '../dynamo/Companies';
-import * as dbUsers from '../dynamo/Users';
-import * as dbDocuments from '../dynamo/CavnessDocuments';
+import { putObjectPresignedUrl, getObjectPresignedUrl, postObjectPresignedUrl } from './fileUtils.js';
+import * as dbCompanies from '../dynamo/Companies.js';
+import * as dbUsers from '../dynamo/Users.js';
+import * as dbDocuments from '../dynamo/CavnessDocuments.js';
 const ProfilePhotosBucket = process.env.IS_OFFLINE ?  'dev-bucket-profile-photos' : process.env.profilePhotosBucket;
 const DocumentsBucket = process.env.IS_OFFLINE ?  'dev-bucket-public-documents' : process.env.publicDocumentsBucket;
 

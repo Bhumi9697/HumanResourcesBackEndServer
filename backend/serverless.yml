@@ -5,7 +5,6 @@ package:
   individually: true
 
 plugins:
-  - serverless-bundle # Package our functions with Webpack
   - serverless-dynamodb-local
   - serverless-offline
   - serverless-dotenv-plugin
@@ -36,6 +35,8 @@ custom:
       convertEmptyValues: true
       online: false
       region: us-east-1
+    # Uncomment only if you already have a DynamoDB running locally
+    # noStart: true
 #    seed:
 #      domain:
 #        sources:
@@ -51,13 +52,13 @@ custom:
 #            sources: [./tests/fakedata/CavnessDocuments.json]
 #          - table: ${self:custom.tableName}-CavnessDocumentAccess
 #            sources: [./tests/fakedata/documentAccess.json]
-    # Uncomment only if you already have a DynamoDB running locally
-    # noStart: true
 provider:
   name: aws
-  runtime: nodejs10.x
+  #runtime: nodejs10.x #should be updated to v16, nodejs16.x,
+  runtime: nodejs16.x
   stage: dev
   region: us-east-1
+  versionedFunctions: false
 
   # These environment variables are made available to our functions
   # under process.env.
@@ -152,8 +153,10 @@ functions:
           pool: ${self:custom.stage}-user-pool
           trigger: CustomMessage
           existing: true
+
   auth:
     handler: auth/customAuthorizor.authorize
+
 # Create our resources with separate CloudFormation templates
 resources:
   # API Gateway Errors

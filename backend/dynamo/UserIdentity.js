@@ -1,4 +1,5 @@
-import * as db from './dynamo';
+import * as db from './dynamo.js';
+
 const TableName = process.env.stage + '-UserIdentity';
 
 export function create(userProps) {

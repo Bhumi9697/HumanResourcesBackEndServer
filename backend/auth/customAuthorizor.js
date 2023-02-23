@@ -14,7 +14,7 @@ const iss = process.env.IS_OFFLINE
   ? 'https://cognito-idp.us-east-1.amazonaws.com/us-east-1_I0bn9P4vb'
   : 'https://cognito-idp.' + process.env.region + '.amazonaws.com/' + process.env.userPoolId;
 
-console.log( 'iss:',iss);
+console.log('iss:',iss);
 
 // Generate policy to allow this user on this API:
 const generatePolicy = (principalId, effect, resource) => {

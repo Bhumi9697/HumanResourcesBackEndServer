@@ -1,6 +1,6 @@
-import uuid from 'uuid/v1';
-import * as db from './dynamo';
-import accessControl from '../libs/accessControl';
+import uuid from 'uuid/v1.js';
+import * as db from './dynamo.js';
+import accessControl from '../libs/accessControl.js';
 
 const TableName = process.env.stage + '-CompanyLocation';
 

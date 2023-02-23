@@ -1,14 +1,6 @@
-# cavness-serverless
-Backend Mono-repo for deploying aws services.
 
-# Setup
-To run this project offline make sure serverless framework is installed:
-<pre><code>
-npm install -g serverless
-</code></pre>
-
-# install 
-project dependencies in root directory:
+# Install 
+Install the project dependencies in root directory:
 <pre><code>
 yarn install
 </code></pre>
@@ -16,16 +8,10 @@ yarn install
 # Running offline
 To run dynamodb and graphql on your local machine:
 <pre><code>
-sls offline start
+yarn start
 </code></pre>
-Now you can access the graphql endpoint at localhost:3000/graphql
 
-# Running online
-Configure your aws credentials with aws-cli (do not commit/add to github!!!)
-then run:
-<pre><code>
-sls deploy
-</code></pre>
+Now you can access the graphql endpoint at http://localhost:3000/graphql
 
 # Project Structure
 <pre>
@@ -67,10 +53,5 @@ Contains servlerless .yml files for provisioning AWS resources.
 # serverless.yml
 Root serverless script, joins all resources files, deployment stages, and plugin dependencies.
 
-
-
-
 # Project Dependencies
-Brief description of what resources this project uses:
-
 This project is a managed deployment on Amazon Web Services using AWS Cognito for User Authentication. Dynamodb for database storage. S3 for large/media file type storage. API gateway for managing access to available routes.

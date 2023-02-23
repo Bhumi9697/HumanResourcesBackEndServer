@@ -1,11 +1,11 @@
 
 import { mergeResolvers } from 'merge-graphql-schemas';
-import UserResolver from './user';
-import CompanyResolver from './Company';
-import DocumentResolver from './Document';
-import EmployeeDocuments from './EmployeeDocuments';
-import EnumResolver from './Enums';
-import ActivityLog from './ActivityLog';
+import UserResolver from './user.js';
+import CompanyResolver from './Company.js';
+import DocumentResolver from './Document.js';
+import EmployeeDocuments from './EmployeeDocuments.js';
+import EnumResolver from './Enums.js';
+import ActivityLog from './ActivityLog.js';
 const resolvers = [
   UserResolver,
   CompanyResolver,

@@ -1,6 +1,6 @@
-import * as dbDocuments from '../../dynamo/CavnessDocuments';
-import * as dbDocumentAccess from '../../dynamo/DocumentAccess';
-import * as dbCompanyLocations from '../../dynamo/CompanyLocation';
+import * as dbDocuments from '../../dynamo/CavnessDocuments.js';
+import * as dbDocumentAccess from '../../dynamo/DocumentAccess.js';
+import * as dbCompanyLocations from '../../dynamo/CompanyLocation.js';
 
 export async function getMyCompanyDocuments (companyId) {
 

@@ -1,12 +1,12 @@
-import uuid from 'uuid/v1';
+import uuid from 'uuid/v1.js';
 import { UserInputError } from 'apollo-server-lambda';
-import * as dbCompanies from '../../dynamo/Companies';
-import * as userPool from '../../auth/adminUserPool';
-import * as dbUserIdentity from '../../dynamo/UserIdentity';
-import * as dbUsers from '../../dynamo/Users';
-import * as dbCompanyLocations from '../../dynamo/CompanyLocation';
-import * as fileHandler from '../../libs/fileHandler';
-import accessControl from '../../libs/accessControl';
+import * as dbCompanies from '../../dynamo/Companies.js';
+import * as userPool from '../../auth/adminUserPool.js';
+import * as dbUserIdentity from '../../dynamo/UserIdentity.js';
+import * as dbUsers from '../../dynamo/Users.js';
+import * as dbCompanyLocations from '../../dynamo/CompanyLocation.js';
+import * as fileHandler from '../../libs/fileHandler.js';
+import accessControl from '../../libs/accessControl.js';
 
 export default {
   Query: {

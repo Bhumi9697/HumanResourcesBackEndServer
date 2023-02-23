@@ -67,12 +67,14 @@ export default {
         ...args
       };
 
-      await userPool.addUserToPool(userArgs).catch(
-        (err) => {
-          console.log('cognito err',err.message);
-          throw new UserInputError(err.message);
-        }
-      );
+      // ====================================================================
+      // Don't really add to the cognito user pool:wa
+      // await userPool.addUserToPool(userArgs).catch(
+      //   (err) => {
+      //     console.log('cognito err',err.message);
+      //     throw new UserInputError(err.message);
+      //   }
+      // );
 
       if(['superadmin','accountmanager'].indexOf(args.userRole) != -1){
         args.companyId = 'cavness';

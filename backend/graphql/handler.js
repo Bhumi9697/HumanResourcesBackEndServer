@@ -49,10 +49,8 @@ async function authenticate(AuthorizationHeader){
 ////////////////////////////////////////////////////////////////
 export const graphqlHandler = (event, context, callback) => {
   let ignoreAuthentication = true;
-//console.log(event.body);
 
   let request = JSON.parse(event.body);
-//console.log(request);
   if(request && request.query){
   let graph = gql`${request.query}`;
 
@@ -65,7 +63,6 @@ export const graphqlHandler = (event, context, callback) => {
      if(event.headers && event.headers.Authorization ){
 
         authenticate(event.headers.Authorization).then(result => {
-
           if(result != "Unauthorized"){
             context.user = result || 0;
             accessControl.setUser(context.user);
@@ -102,7 +99,6 @@ export const graphqlHandler = (event, context, callback) => {
       else{
         //Only for register company and owner.
         if(ignoreAuthentication || process.env.IS_OFFLINE){
-          console.log('creating unauthenticated server handler...');
           server.createHandler({
             cors: {
               origin: '*',

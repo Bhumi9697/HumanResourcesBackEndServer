@@ -1,11 +1,10 @@
 import AWS from 'aws-sdk'; // eslint-disable-line import/no-extraneous-dependencies
 
-
 const dynamoDb = process.env.IS_OFFLINE ? new AWS.DynamoDB.DocumentClient({
     region: 'us-east-1',
-// Uncomment for using local instance of dynamo;
+    // Use the local instance of dynamo
     endpoint: 'http://localhost:8000',
-convertEmptyValues:true
+    convertEmptyValues:true
 }) :  new AWS.DynamoDB.DocumentClient({ convertEmptyValues: true,region: 'us-east-1'});
 
 export function formatUpdate(params,args){

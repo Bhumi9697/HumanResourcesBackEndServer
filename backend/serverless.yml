@@ -31,34 +31,15 @@ custom:
       inMemory: true
       heapInitial: 200m
       heapMax: 1g
-      migrate: false
+      migrate: true
       convertEmptyValues: true
       online: false
       region: us-east-1
-    # Uncomment only if you already have a DynamoDB running locally
-    # noStart: true
-#    seed:
-#      domain:
-#        sources:
-#          - table: ${self:custom.tableName}-UserIdentity
-#            sources: [./tests/fakedata/userIdentity.json]
-#          - table: ${self:custom.tableName}-User
-#            sources: [./tests/fakedata/userIdentity.json]
-#          - table: ${self:custom.tableName}-Company
-#            sources: [./tests/fakedata/companies.json]
-#          - table: ${self:custom.tableName}-CompanyLocation
-#            sources: [./tests/fakedata/CompanyLocations.json]
-#          - table: ${self:custom.tableName}-CavnessDocument
-#            sources: [./tests/fakedata/CavnessDocuments.json]
-#          - table: ${self:custom.tableName}-CavnessDocumentAccess
-#            sources: [./tests/fakedata/documentAccess.json]
 provider:
   name: aws
-  #runtime: nodejs10.x #should be updated to v16, nodejs16.x,
   runtime: nodejs16.x
   stage: dev
   region: us-east-1
-  versionedFunctions: false
 
   # These environment variables are made available to our functions
   # under process.env.

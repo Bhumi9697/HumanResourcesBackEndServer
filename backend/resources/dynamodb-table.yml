@@ -2,7 +2,7 @@ Resources:
   UserIdentity:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:custom.tableName}-UserIdentity
+      TableName: UserIdentity
       AttributeDefinitions:
         - AttributeName: userId
           AttributeType: S
@@ -16,7 +16,7 @@ Resources:
   UserTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:custom.tableName}-User
+      TableName: User
       AttributeDefinitions:
         - AttributeName: companyId
           AttributeType: S
@@ -34,7 +34,7 @@ Resources:
   EmployeeDocumentsTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:custom.tableName}-EmployeeDocuments
+      TableName: EmployeeDocuments
       AttributeDefinitions:
         - AttributeName: companyId
           AttributeType: S
@@ -52,7 +52,7 @@ Resources:
   UserActivityTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:custom.tableName}-UserActivityTable
+      TableName: UserActivityTable
       AttributeDefinitions:
         - AttributeName: companyId
           AttributeType: S
@@ -70,7 +70,7 @@ Resources:
   CavnessDocumentsTable2:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:custom.tableName}-DocumentTable
+      TableName: DocumentTable
       AttributeDefinitions:
         - AttributeName: documentType
           AttributeType: S
@@ -88,7 +88,7 @@ Resources:
   DocumentAccessTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:custom.tableName}-DocumentAccess
+      TableName: DocumentAccess
       AttributeDefinitions:
         - AttributeName: hashKey
           AttributeType: S
@@ -116,7 +116,7 @@ Resources:
   DocumentCategoryTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:custom.tableName}-DocumentCategory
+      TableName: DocumentCategory
       AttributeDefinitions:
         - AttributeName: companyId
           AttributeType: S
@@ -134,7 +134,7 @@ Resources:
   AccountManagerTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:custom.tableName}-AccountManagerTable
+      TableName: AccountManagerTable
       AttributeDefinitions:
         - AttributeName: userId
           AttributeType: S
@@ -152,7 +152,7 @@ Resources:
   CompanyLocationTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:custom.tableName}-CompanyLocation
+      TableName: CompanyLocation
       AttributeDefinitions:
         - AttributeName: companyId
           AttributeType: S
@@ -170,7 +170,7 @@ Resources:
   CompanyTable:
     Type: AWS::DynamoDB::Table
     Properties:
-      TableName: ${self:custom.tableName}-Company
+      TableName: Company
       AttributeDefinitions:
         - AttributeName: companyId
           AttributeType: S

@@ -1,6 +1,8 @@
-// Copyright 2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
-// SPDX-License-Identifier: Apache-2.0
 export function sendEmail(emailAdresses, body, subject){
+
+  // =================
+  // Don't really send emails
+  return;
 
   var aws = require('aws-sdk');
   //var ses = new aws.SES({region: 'us-west-2'});

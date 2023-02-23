@@ -44,8 +44,7 @@ export default {
 
       try{
         user = await dbUserIdentity.getUserById(userId);
-      }
-      catch(e){
+      } catch(e) {
         console.log(e);
       }
 
@@ -53,14 +52,6 @@ export default {
         console.log('user already exists:');
         throw new UserInputError("User with that email already exists");
       }
-
-      // if(args.employeeId){
-      //   console.log('user with that employeeid exists:');
-      //   let employeeId = await dbUsers.getUserByEmployeeId(args);
-      //   if(employeeId.length > 0){
-      //     throw new UserInputError("User with that employeeId already exists");
-      //   }
-      // }
 
       let userArgs = {
         userId:userId,

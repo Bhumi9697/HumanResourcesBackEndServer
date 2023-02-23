@@ -20,6 +20,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    yarn serverless dynamodb start &
     yarn install
     yarn test
   displayName: 'yarn install and build'

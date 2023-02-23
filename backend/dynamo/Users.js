@@ -1,6 +1,7 @@
 import * as db from './dynamo.js';
 import accessControl from '../libs/accessControl.js';
-const TableName = process.env.stage + '-User';
+
+const TableName = 'User';
 
 export function getUser(userId, companyId) {
   accessControl.canViewUser({companyId,userId});

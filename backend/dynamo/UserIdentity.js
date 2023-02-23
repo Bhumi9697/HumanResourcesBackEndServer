@@ -1,6 +1,6 @@
 import * as db from './dynamo.js';
 
-const TableName = process.env.stage + '-UserIdentity';
+const TableName = 'UserIdentity';
 
 export function create(userProps) {
   //accessControl.canModifyUser(userProps);

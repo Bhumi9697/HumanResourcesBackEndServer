@@ -1,6 +1,6 @@
 import * as db from './dynamo.js';
 
-const TableName = process.env.stage + '-DocumentCategory';
+const TableName = 'DocumentCategory';
 
 
 export function getMyDocumentCategories(args){

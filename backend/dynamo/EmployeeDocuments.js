@@ -1,7 +1,8 @@
 //import uuid from 'uuid/v1';
 import * as db from './dynamo.js';
 
-const TableName = process.env.stage + '-EmployeeDocuments';
+const TableName = 'EmployeeDocuments';
+
 import accessControl from '../libs/accessControl.js';
 
 function addHash(args){

@@ -1,6 +1,6 @@
 import * as db from './dynamo.js';
 import accessControl from '../libs/accessControl.js';
-const TableName = process.env.stage + '-DocumentTable';
+const TableName = 'DocumentTable';
 
 export function listDocuments() {
   accessControl.adminOnly();

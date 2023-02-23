@@ -2,7 +2,7 @@ import uuid from 'uuid/v1.js';
 import * as db from './dynamo.js';
 import accessControl from '../libs/accessControl.js';
 
-const TableName = process.env.stage + '-Company';
+const TableName = 'Company';
 
 export function listCompanies() {
   accessControl.adminOnly();

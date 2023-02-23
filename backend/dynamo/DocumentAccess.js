@@ -3,7 +3,7 @@ import * as db from './dynamo.js';
 import accessControl from '../libs/accessControl.js';
 import * as ActivityHelper from '../libs/ActivityHelper.js';
 
-const TableName = process.env.stage + '-DocumentAccess';
+const TableName = 'DocumentAccess';
 
 function createHash(args){
   let key = '';

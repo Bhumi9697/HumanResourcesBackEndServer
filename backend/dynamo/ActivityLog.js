@@ -1,7 +1,7 @@
 //import uuid from 'uuid/v1';
 import * as db from './dynamo.js';
 
-const TableName = process.env.stage + '-UserActivityTable';
+const TableName = 'UserActivityTable';
 
 import accessControl from '../libs/accessControl.js';
 

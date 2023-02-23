@@ -5,6 +5,7 @@ import accessControl from '../libs/accessControl'
 
 const server = (context) => {
   accessControl.setUser(context.user)
+
   let apollo =  new ApolloServer({
     introspection:true,
     typeDefs: schema,

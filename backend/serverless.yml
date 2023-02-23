@@ -10,8 +10,8 @@ plugins:
   - serverless-dotenv-plugin
 #  - serverless-dotenv-plugin # Load .env as environment variables
 custom:
-  #This disables serverless.com logging services
   enterprise:
+    #This disables serverless.com logging services
     collectLambdaLogs: false
   # Our stage is based on what is passed in when running serverless
   # commands. Or fallsback to what we have set in the provider section.

@@ -5,7 +5,8 @@
   "description": "A Node.js starter for the Serverless Framework with async/await and unit test support",
   "main": "handler.js",
   "scripts": {
-    "test": "env stage=dev jest",
+    "test": "yarn jest ",
+    "test2": "env stage=dev jest",
     "start": "yarn serverless offline start --noPrependStageInUrl"
   },
   "author": "",
@@ -26,6 +27,7 @@
     "chai-as-promised": "^7.1.1",
     "freeport": "^1.0.5",
     "graphql-tester": "0.0.5",
+    "jest": "^29.4.3",
     "mocha": "^7.1.1",
     "serverless-dotenv-plugin": "^2.3.2",
     "serverless-offline": "12.0.4"
@@ -54,8 +56,5 @@
     "serverless-dynamodb-local": "^0.2.10",
     "stripe": "^7.9.1",
     "uuid": "^3.3.3"
-  },
-  "jest": {
-    "testRegex": "__tests__/.*\\.tests\\.js$"
   }
 }

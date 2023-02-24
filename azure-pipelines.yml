@@ -23,7 +23,7 @@ steps:
 # Java tool installer v0
 - task: JavaToolInstaller@0
   inputs:
-    versionSpec: '15' # string. Required. JDK version. Default: 8.
+    versionSpec: '8' # string. Required. JDK version. Default: 8.
     jdkArchitectureOption: x64 # 'x64' | 'x86'. Required. JDK architecture. 
     jdkSourceOption: PreInstalled
 

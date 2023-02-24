@@ -1,3 +1,5 @@
+test-output.json
+
 # Logs
 logs
 *.log
@@ -43,9 +45,5 @@ admin.env
 .env
 _meta
 .serverless
-report.20200212.222319.45557.0.001.json
-report.20200212.204234.45021.0.001.json
 shared-local-instance.db
-report.20200222.234141.10730.0.001.json
-report.20200220.012258.57280.0.001.json
 .DS_Store

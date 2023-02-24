@@ -6,7 +6,6 @@
 pool:
   vmImage: ubuntu-latest
 
-
 variables:
   AWS_ACCESS_KEY_ID: PASTE_YOUR_KEY_HERE
   AWS_SECRET_ACCESS_KEY: PASTE_YOUR_SECRET_KEY_HERE
@@ -35,9 +34,12 @@ steps:
   displayName: 'install and start dynamodb local'
   workingDirectory: backend
 
-
 - script: |
     yarn test
   displayName: 'star testing'
   workingDirectory: backend
+
+- publish: $(System.DefaultWorkingDirectory)/backend/test-output.json
+  artifact: test-output.json
+  
 

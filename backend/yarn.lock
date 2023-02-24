@@ -4481,14 +4481,6 @@ chalk@^2.0.0, chalk@^2.0.1, chalk@^2.4.2:
     escape-string-regexp "^1.0.5"
     supports-color "^5.3.0"
 
-chalk@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/chalk/-/chalk-3.0.0.tgz#3f73c2bf526591f574cc492c51e2456349f844e4"
-  integrity sha512-4D3B6Wf41KOYRFdszmDqMCGq5VV/uMAB273JILmO+3jAlh8X4qDtdtgCR3fxtbLEMzSx22QdhnDcJvu2u1fVwg==
-  dependencies:
-    ansi-styles "^4.1.0"
-    supports-color "^7.1.0"
-
 chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
@@ -5117,11 +5109,6 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
-dotenv-expand@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
-  integrity sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==
-
 dotenv-expand@^9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-9.0.0.tgz#1fd37e2cd63ea0b5f7389fb87256efc38b035b26"
@@ -5131,11 +5118,6 @@ dotenv@^16.0.3:
   version "16.0.3"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.3.tgz#115aec42bac5053db3c456db30cc243a5a836a07"
   integrity sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==
-
-dotenv@^8.2.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
-  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
 duration@^0.2.2:
   version "0.2.2"
@@ -8955,15 +8937,6 @@ serverless-cognito-add-custom-attributes@^0.3.0:
   integrity sha512-BzjaosdlX/KXP4dlEFUQWglAFu5MeceMtp3aXxaOx30YcbpVQhg7N8xWHF0xrqcRCGLcflIgnx/0oksBfiAS7g==
   dependencies:
     lodash "^4.17.10"
-
-serverless-dotenv-plugin@^2.3.2:
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/serverless-dotenv-plugin/-/serverless-dotenv-plugin-2.3.2.tgz#9ff1e6923538166030c80ec194d9fc8ecde698ac"
-  integrity sha512-ILoGzNFFR5FOStZB4oHBLHEj25vpxAGv/qIXO3mTAi5gVdLC16D8kIAnWdOom1y3sBGesgo/BajzBqCSizowew==
-  dependencies:
-    chalk "^3.0.0"
-    dotenv "^8.2.0"
-    dotenv-expand "^5.1.0"
 
 serverless-dynamodb-client@0.0.2:
   version "0.0.2"

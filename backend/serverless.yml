@@ -7,8 +7,6 @@ package:
 plugins:
   - serverless-dynamodb-local
   - serverless-offline
-  - serverless-dotenv-plugin
-#  - serverless-dotenv-plugin # Load .env as environment variables
 custom:
   enterprise:
     #This disables serverless.com logging services

@@ -9,6 +9,7 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+
 variables:
   AWS_ACCESS_KEY_ID: PASTE_YOUR_KEY_HERE
   AWS_SECRET_ACCESS_KEY: PASTE_YOUR_SECRET_KEY_HERE
@@ -18,6 +19,13 @@ steps:
   inputs:
     versionSpec: '16.x'
   displayName: 'Install Node.js'
+
+# Java tool installer v0
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '15' # string. Required. JDK version. Default: 8.
+    jdkArchitectureOption: x64 # 'x64' | 'x86'. Required. JDK architecture. 
+    jdkSourceOption: PreInstalled
 
 - script: |
     yarn install

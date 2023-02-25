@@ -39,7 +39,14 @@ steps:
   displayName: 'star testing'
   workingDirectory: backend
 
-- publish: $(System.DefaultWorkingDirectory)/backend/test-output.json
-  artifact: test-output.json
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/backend/test-output.json'
+    ArtifactName: 'test-output.json'
+    publishLocation: Container
+
+#- publish: $(System.DefaultWorkingDirectory)/backend/test-output.json
+#  artifact: test-output.json
   
 

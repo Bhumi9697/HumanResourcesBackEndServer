@@ -39,13 +39,6 @@ export default {
          userRole:'owner'
       };
 
-      // await userPool.addUserToPool(userArgs).catch(
-      //   (err) => {
-      //     console.log('cognito err',err.message);
-      //     throw new UserInputError(err.message);
-      //   }
-      // );
-
       let identityArgs = {
          userId:userId,
          companyId:companyId,
@@ -74,7 +67,6 @@ export default {
       promises.push(dbCompanies.create(companyArgs));
       promises.push(dbUserIdentity.create(identityArgs));
       promises.push(dbUsers.create(userArgs));
-      //userArgs.password = args.password;
       if(args.companyLocations && args.companyLocations.length > 0){
         let companyLocations = args.companyLocations;
         companyArgs = {
@@ -84,10 +76,8 @@ export default {
           state: companyLocations ? companyLocations.state : "",
           ...companyArgs
         };
-        console.log('adding locations');
         args.companyLocations.map((location) => {
           location.companyId = companyId;
-          console.log('locationObj',location);
           promises.push(dbCompanyLocations.create(location));
         });
       }
@@ -100,16 +90,6 @@ export default {
 
         let company = await dbCompanies.getCompany(args.companyId);
         if(company){
-          if(args.status){
-            dbUsers.getUsersByCompany(args.companyId).then((users) => {
-              if(args.status == 'inactive'){
-                //users.forEach(user => userPool.disableUser(user));
-              }
-              if(args.status == 'active'){
-                //users.forEach(user => userPool.enableUser(user));
-              };
-            });
-          }
           return dbCompanies.update(args);
         }
         else {
@@ -126,7 +106,6 @@ export default {
   Company:{
     users: (_,args) => dbUsers.getUsersByCompany(_.companyId),
     companyLocations: (_,args,context) => {
-      console.log('sub context',context);
       if(_.companyId){
         return dbCompanyLocations.getCompanyLocations(_.companyId);
       }

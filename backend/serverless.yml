@@ -45,10 +45,6 @@ provider:
     stage: ${self:custom.stage, 'dev'}
     tableName: ${self:custom.tableName}
 
-    userPoolId:
-      Ref: CognitoUserPool2
-    userPoolClientId:
-      Ref: CognitoUserPoolClient
     region: ${self:provider.region}
     profilePhotosBucket:
       Ref: ProfilePhotosBucket
@@ -72,44 +68,6 @@ provider:
       # the specific table for the stage
       Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*"
 
-    - Effect: Allow
-      Action:
-        - s3:PutObject
-        - s3:GetObject
-        - s3:ListBucket
-        - s3:ListBucketVersions
-      Resource:
-        - 'arn:aws:s3:::${self:custom.bucket}-profile-photos'
-        - 'arn:aws:s3:::${self:custom.bucket}-profile-photos/*'
-
-    - Effect: Allow
-      Action:
-        - s3:PutObject
-        - s3:GetObject
-        - s3:ListBucket
-        - s3:ListBucketVersions
-      Resource:
-        - 'arn:aws:s3:::${self:custom.bucket}-public-documents'
-        - 'arn:aws:s3:::${self:custom.bucket}-public-documents/*'
-
-    - Effect: Allow
-      Action:
-        - s3:PutObject
-        - s3:GetObject
-        - s3:ListBucket
-        - s3:ListBucketVersions
-      Resource:
-        - 'arn:aws:s3:::${self:custom.bucket}-private-documents'
-        - 'arn:aws:s3:::${self:custom.bucket}-private-documents/*'
-
-    - Effect: Allow
-      Action:
-        - cognito-idp:AdminGetUser
-        - cognito-idp:AdminCreateUser
-        - cognito-idp:AdminEnableUser
-        - cognito-idp:AdminDisableUser
-      Resource: !GetAtt 'CognitoUserPool2.Arn'
-
 functions:
   # Defines an HTTP API endpoint that calls the main function in create.js
   # - path: url path is /notes
@@ -124,14 +82,6 @@ functions:
         path: /graphql
         method: any
         cors: true
-
-  customMessage:
-    handler: auth/customMessage.handler
-    events:
-      - cognitoUserPool:
-          pool: ${self:custom.stage}-user-pool
-          trigger: CustomMessage
-          existing: true
 
 resources:
   # DynamoDB

@@ -3,7 +3,6 @@ import * as db from './dynamo.js';
 const TableName = 'UserIdentity';
 
 export function create(userProps) {
-  //accessControl.canModifyUser(userProps);
   const params = {
     TableName,
     Item: {
@@ -26,7 +25,6 @@ export function getUserById(userId) {
 }
 
 export function updateUserIdentity(args) {
-  console.log('user props ', args);
   const params = {
     TableName,
     Key:{

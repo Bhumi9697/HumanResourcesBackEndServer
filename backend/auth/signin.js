@@ -15,8 +15,8 @@ export default function signinHandler(body) {
   };
 
   const poolData = {
-    UserPoolId: 'us-east-1_4nMl1uGjK',
-    ClientId: '3ap2pm7bk2ecn958f9n0tdfveb'
+    UserPoolId: '',
+    ClientId: ''
   };
 
   const authDetails = new AuthenticationDetails(authenticationDetails);

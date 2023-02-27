@@ -16,7 +16,6 @@ const server = (context) => {
       return error;
     },
     formatResponse: response => {
-      //console.log(response);
       return response;
     },
     playground: true,

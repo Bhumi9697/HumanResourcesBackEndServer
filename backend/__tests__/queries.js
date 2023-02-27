@@ -89,71 +89,6 @@ export const LIST_COMPANIES = gql`{
   }
 }`;
 
-
-export const LIST_DOCUMENTS = gql`{
-	listDocuments{
- 		documentId
-    documentType
-    documentName
-    documentKey
-    createdOn
-    description
-    filename
-    category
-    documentPermissions{
-      documentId
-      companyId
-      state
-      city
-      hashKey
-      type
-    }
-    updatedBy{
-      userId
-      first
-      last
-    }
-    status
-    # documentUrl
-	}
-}`;
-
-export const LIST_EMPLOYEE_DOCUMENTS = gql`
-{
-	listEmployeeDocuments{
- 		userDocId
-    documentName
-    documentKey
-    createdOn
-    description
-    filename
-
-    updatedBy{
-      userId
-      first
-      last
-    }
-    status
-	}
-}`;
-
-export const LIST_MY_DOCUMENTS = gql`
-{
-	listMyDocuments{
- 		documentId
-    documentName
-    description
-	}
-}`;
-
-export const EMPLOYEE_DOCUMENTS_BY_USER = gql`
-{
-	employeeDocsByUser(companyId:"cavness", userId:"szavio@gmail.com"){
-    userId
-    userDocId
-  }
-}`;
-
 export const SCAN_PERMISSIONS = gql`
 {
 	scanPermissions{
@@ -173,17 +108,6 @@ export const SCAN_PERMISSIONS = gql`
     documentUrl
 	}
 }`;
-
-export const GET_ADMIN_USER = gql`
-{
-  getUser(userId:"szavio@gamil.com" companyId:"cavness"){
-    userId
-    userRole
-    first
-    last
-    contactPhone
-  }
-}`
 
 export const ME = gql`
 {
@@ -221,30 +145,5 @@ export const GET_COMPANY = gql`
   getCompany(companyId:"5a198de0-7355-11ea-a6e4-335f2e84501a"){
     companyName
     companyId
-  }
-}`
-
-export const GET_EMPLOYEE_DOCUMENT = gql`
-{
-  getEmployeeDocument(userDocId:"szavio@gmail.com$5b4ebe50-f1a0-11ea-adb4-4b2645fb8b26",companyId:"cavness"){
-    description
-    documentType
-    documentName
-  }
-}`
-
-export const GET_MY_DOCUMENT_CATEGORIES = gql`
-{
-  getMyDocumentCategories{
-    companyId
-    categoryText
-  }
-}`
-
-export const EMPLOYEE_DOCUMENTS_BY_COMPANY = gql`
-{
-  employeeDocsByCompany(companyId:"cavness"){
-    userId
-    userDocId
   }
 }`

@@ -36,20 +36,6 @@ export default {
     STATE:'state',
     COMPANY:'company'
   },
-  EmployeeDocumentTypeEnum:{
-    IDPROOF:'idproof',
-    EMPLOYEEHANDBOOK:'employeehandbook',
-    I9FORM:'i9form',
-    HRPOLICY:'hrpolicy',
-  },
-  DocumentCategoryEnum:{
-    LABORPOSTER:'laborposter',
-    HRLAWS:'hrlaws',
-    EMPLOYEEHANDBOOK:'employeehandbook',
-    HRPOLICY:'hrpolicy',
-    JOBDESCRIPTION:'jobdescription',
-    ONBOARDING:'onboarding'
-  },
   ActionTypeEnum:{
     USERDOCUMENTADDED:'userdocumentadded',
     UPLOADNEEDED:'uploadneeded',

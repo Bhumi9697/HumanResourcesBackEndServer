@@ -4,9 +4,6 @@ import { mergeTypes } from 'merge-graphql-schemas';
 import User from './User.js';
 import Company from './Company.js';
 import CompanyLocation from './CompanyLocation.js';
-import CavnessDocument from './CavnessDocument.js';
-import DocumentCategory from './DocumentCategory.js';
-import EmployeeDocument from './EmployeeDocument.js';
 import EnumTypes from './EnumTypes.js';
 import ActivityLog from './ActivityLog.js';
 
@@ -15,9 +12,6 @@ const types = [
   User,
   Company,
   CompanyLocation,
-  CavnessDocument,
-  EmployeeDocument,
-  DocumentCategory,
   ActivityLog
 ];
 

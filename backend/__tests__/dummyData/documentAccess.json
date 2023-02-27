@@ -1,7 +1,0 @@
-[
-  { "hashKey":"city#California#Los Angeles","documentId":"12","type":"city","documentName":"city doc"},
-  { "hashKey":"city#Colorado#Denver","documentId":"13","type":"city","documentName":"city doc"},
-  { "hashKey":"state#California","documentId":"14","type":"state","documentName":"state doc"},
-  { "hashKey":"state#Colorado","documentId":"15","type":"state","documentName":"state doc"},
-  { "hashKey":"company#company4","documentId":"16","type":"company","documentName":"company doc"}
-]

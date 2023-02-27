@@ -1,7 +1,6 @@
 import uuid from 'uuid/v1.js';
 import { UserInputError } from 'apollo-server-lambda';
 import * as dbCompanies from '../../dynamo/Companies.js';
-import * as userPool from '../../auth/adminUserPool.js';
 import * as dbUserIdentity from '../../dynamo/UserIdentity.js';
 import * as dbUsers from '../../dynamo/Users.js';
 import * as dbCompanyLocations from '../../dynamo/CompanyLocation.js';
@@ -40,12 +39,12 @@ export default {
          userRole:'owner'
       };
 
-      await userPool.addUserToPool(userArgs).catch(
-        (err) => {
-          console.log('cognito err',err.message);
-          throw new UserInputError(err.message);
-        }
-      );
+      // await userPool.addUserToPool(userArgs).catch(
+      //   (err) => {
+      //     console.log('cognito err',err.message);
+      //     throw new UserInputError(err.message);
+      //   }
+      // );
 
       let identityArgs = {
          userId:userId,
@@ -104,10 +103,10 @@ export default {
           if(args.status){
             dbUsers.getUsersByCompany(args.companyId).then((users) => {
               if(args.status == 'inactive'){
-                users.forEach(user => userPool.disableUser(user));
+                //users.forEach(user => userPool.disableUser(user));
               }
               if(args.status == 'active'){
-                users.forEach(user => userPool.enableUser(user));
+                //users.forEach(user => userPool.enableUser(user));
               };
             });
           }

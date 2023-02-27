@@ -2,10 +2,8 @@ import {AuthenticationError, UserInputError } from 'apollo-server-lambda';
 import uuid from 'uuid/v1.js';
 import * as dbUsers from '../../dynamo/Users.js';
 import * as dbUserIdentity from '../../dynamo/UserIdentity.js';
-//import * as dbUserDocuments from '../../dynamo/UserDocuments';
 import * as dbCompanyLocations from '../../dynamo/CompanyLocation.js';
 import * as dbCompanies from '../../dynamo/Companies.js';
-import * as userPool from '../../auth/adminUserPool.js';
 import * as fileHandler from '../../libs/fileHandler.js';
 import * as ActivityHelper from '../../libs/ActivityHelper.js';
 import accessControl from '../../libs/accessControl.js';
@@ -115,12 +113,12 @@ export default {
          password: args.password
       };
 
-      await userPool.userSignUp(userArgs).catch(
-        (err) => {
-          console.log('cognito err',err.message);
-          throw new UserInputError(err.message);
-        }
-      );
+      // await userPool.userSignUp(userArgs).catch(
+      //   (err) => {
+      //     console.log('cognito err',err.message);
+      //     throw new UserInputError(err.message);
+      //   }
+      // );
 
       let identityArgs = {
          userId:userId,
@@ -186,11 +184,11 @@ export default {
       if(args.userStatus){
         if(args.userStatus == 'inactive'){
           console.log('disabling user');
-          promises.push(userPool.disableUser(args));
+          //promises.push(userPool.disableUser(args));
         }
         if(args.userStatus == 'active'){
           console.log('enabling user');
-          promises.push(userPool.enableUser(args));
+          // promises.push(userPool.enableUser(args));
         }
       }
       return Promise.all(promises).then(function(values) {

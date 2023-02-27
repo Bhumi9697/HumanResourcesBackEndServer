@@ -43,22 +43,6 @@ enum DocumentTypeEnum {
   STATE
 }
 
-enum EmployeeDocumentTypeEnum {
-  IDPROOF
-  EMPLOYEEHANDBOOK
-  I9FORM
-  HRPOLICY
-}
-
-enum DocumentCategoryEnum {
-  LABORPOSTER
-  HRLAWS
-  EMPLOYEEHANDBOOK
-  HRPOLICY
-  JOBDESCRIPTION
-  ONBOARDING
-}
-
 enum ActionTypeEnum {
   USERDOCUMENTADDED
   UPLOADNEEDED

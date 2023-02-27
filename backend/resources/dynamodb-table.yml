@@ -31,24 +31,6 @@ Resources:
         ReadCapacityUnits: 1
         WriteCapacityUnits: 1
 
-  EmployeeDocumentsTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: EmployeeDocuments
-      AttributeDefinitions:
-        - AttributeName: companyId
-          AttributeType: S
-        - AttributeName: userDocId
-          AttributeType: S
-      KeySchema:
-        - AttributeName: companyId
-          KeyType: HASH
-        - AttributeName: userDocId
-          KeyType: RANGE
-      ProvisionedThroughput:
-        ReadCapacityUnits: 1
-        WriteCapacityUnits: 1
-
   UserActivityTable:
     Type: AWS::DynamoDB::Table
     Properties:
@@ -62,70 +44,6 @@ Resources:
         - AttributeName: companyId
           KeyType: HASH
         - AttributeName: userActivityId
-          KeyType: RANGE
-      ProvisionedThroughput:
-        ReadCapacityUnits: 1
-        WriteCapacityUnits: 1
-
-  CavnessDocumentsTable2:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: DocumentTable
-      AttributeDefinitions:
-        - AttributeName: documentType
-          AttributeType: S
-        - AttributeName: documentId
-          AttributeType: S
-      KeySchema:
-        - AttributeName: documentType
-          KeyType: HASH
-        - AttributeName: documentId
-          KeyType: RANGE
-      ProvisionedThroughput:
-        ReadCapacityUnits: 1
-        WriteCapacityUnits: 1
-
-  DocumentAccessTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: DocumentAccess
-      AttributeDefinitions:
-        - AttributeName: hashKey
-          AttributeType: S
-        - AttributeName: documentId
-          AttributeType: S
-      KeySchema:
-        - AttributeName: hashKey
-          KeyType: HASH
-        - AttributeName: documentId
-          KeyType: RANGE
-      GlobalSecondaryIndexes:
-      - IndexName: documentId
-        KeySchema:
-          - AttributeName: documentId
-            KeyType: HASH
-        Projection:
-          ProjectionType: ALL
-        ProvisionedThroughput:
-          ReadCapacityUnits: 1
-          WriteCapacityUnits: 1
-      ProvisionedThroughput:
-        ReadCapacityUnits: 1
-        WriteCapacityUnits: 1
-
-  DocumentCategoryTable:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: DocumentCategory
-      AttributeDefinitions:
-        - AttributeName: companyId
-          AttributeType: S
-        - AttributeName: categoryText
-          AttributeType: S
-      KeySchema:
-        - AttributeName: companyId
-          KeyType: HASH
-        - AttributeName: categoryText
           KeyType: RANGE
       ProvisionedThroughput:
         ReadCapacityUnits: 1

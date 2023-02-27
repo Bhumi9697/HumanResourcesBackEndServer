@@ -64,7 +64,6 @@ export function getUserByEmployeeId(args){
   return db.query(params);
 }
 
-
 export function create(args) {
   const params = {
     TableName,
@@ -77,7 +76,6 @@ export function create(args) {
 
   return db.createItem(params);
 }
-
 
 export function updateUser(args) {
   const params = {

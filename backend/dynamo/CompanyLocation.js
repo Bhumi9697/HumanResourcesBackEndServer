@@ -1,4 +1,4 @@
-import uuid from 'uuid/v1.js';
+import { v4 as uuid } from 'uuid';
 import * as db from './dynamo.js';
 import accessControl from '../libs/accessControl.js';
 

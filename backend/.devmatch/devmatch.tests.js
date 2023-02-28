@@ -6,18 +6,18 @@ import {
   LIST_COMPANIES,
   GET_USER,
   COMPANY_USERS,
-} from "./queries";
+} from "../__tests__/queries";
 import {
   CREATE_ADMIN,
   CREATE_COMPANY_AND_OWNER,
   UPDATE_USER,
-} from "./mutations";
+} from "../__tests__/mutations";
 import { expect } from "chai";
 
 const { createTestClient } = require("apollo-server-testing");
-const { createServer } = require("./server");
+const { createServer } = require("../__tests__/server");
 
-describe("Queries", () => {
+describe("DEVMATCH_TEST_CASES", () => {
   const server = createServer({
     user: {
       userId: "employee@test.com",
@@ -27,7 +27,7 @@ describe("Queries", () => {
     },
   });
 
-  it("list Users", async () => {
+  it("TEST_CASE_1", async () => {
     const uniqueId = uuidv4();
     const { query, mutate } = createTestClient(server);
     const reponse1 = await query({ query: LIST_USERS });
@@ -57,49 +57,7 @@ describe("Queries", () => {
     expect(foundElement).to.not.be.null;
   });
 
-
-  it("list Companies", async () => {
-    const { query } = createTestClient(server);
-    const res = await query({ query: LIST_COMPANIES });
-    expect(res.data.listCompanies).to.be.an("array");
-  });
-
-  it("list company users", async () => {
-    const { query } = createTestClient(server);
-    const res = await query({ query: COMPANY_USERS });
-    expect(res.data.companyUsers).to.be.an("array");
-  });
-
-
-  it("create and get a user", async () => {
-    const uniqueId = uuidv4();
-    const { query, mutate } = createTestClient(server);
-
-    //
-    // First, create a user and a company
-    //
-    const email = `${uniqueId}@contoso.com`;
-    const companyName = `${uniqueId} Incorporated`;
-    let creationResult = await mutate({
-      mutation: CREATE_COMPANY_AND_OWNER,
-      variables: { email: email, companyName: companyName },
-    });
-    const companyId = creationResult.data.createCompanyAndOwner.companyId;
-
-    //
-    // Fetch the recently created user
-    //
-    // The user ID is the email!
-    const userId = email;
-    const res = await query({ query: GET_USER,  
-      variables: { userId: userId, companyId: companyId }
-    });
-    expect(res.data.getUser).to.be.an("object");
-    expect(res.data.getUser.userId).to.equal(userId);
-    expect(res.data.getUser.email).to.equal(email);
-  });
-
-  it("create and update a user", async () => {
+  it("TEST_CASE_2", async () => {
     const uniqueId = uuidv4();
     const { query, mutate } = createTestClient(server);
 
@@ -145,5 +103,41 @@ describe("Queries", () => {
     expect(getUserAgainRes.data.getUser.email).to.equal(email);
     expect(getUserAgainRes.data.getUser.first).to.equal("John");
     expect(getUserAgainRes.data.getUser.last).to.equal("Doe");
+  });
+
+  it("TEST_CASE_3", async () => {
+    const uniqueId = uuidv4();
+    const { query, mutate } = createTestClient(server);
+
+    //
+    // Create a new company
+    //
+    const email = `${uniqueId}@contoso.com`;
+    const companyName = `${uniqueId} Incorporated`;
+    let creationResult = await mutate({
+      mutation: CREATE_COMPANY_AND_OWNER,
+      variables: { email: email, companyName: companyName },
+    });
+    // Internally, the user email beecomes the ID
+    const companyId = creationResult.companyId;
+
+    //
+    // Update the field
+    //
+    const UPDATE_COMPANY = `
+      mutation updateCompany($companyId:String!,$employeeCount:Number!){
+        updateCompany(companyId:$companyId, employeeCount:$employeeCount){
+          companyId
+        }
+      }`
+    //const response2 = await query({ query: LIST_USERS });
+    //expect(response2.data.listUsers).to.be.an("array");
+    //expect(response2.data.listUsers).to.have.length(oldListSize + 1)
+    //const foundElement = response2.data.listUsers.find((el)=> el.userId === userId)
+    //expect(foundElement).to.not.be.null;
+
+    //
+    // Request the company again to see if it contains the data we want
+    //
   });
 })

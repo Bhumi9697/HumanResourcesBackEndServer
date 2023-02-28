@@ -99,58 +99,6 @@ class AccessControl {
         this._throwError();
     }
 
-    async canViewDoc(document){
-        if(this._isAdmin()){
-            return true;
-        }
-        let viewableDocs = await getMyCompanyDocuments(this.companyId);
-        if (viewableDocs.some(e => e.documentId === document.documentId)) {
-            return true;
-        }
-        this._throwError();
-    }
-
-    async canViewPrivateDoc(employeeDocument){
-        if(this._isAdmin()){
-            return true;
-        }
-
-        if(this.isCompanyAdmin && this._sameCompany(employeeDocument.companyId)){
-            return true;
-        }
-
-        let viewableDocs = await getMyCompanyDocuments(this.companyId);
-        if (viewableDocs.some(e => e.documentId === employeeDocument.documentId)) {
-            return true;
-        }
-        this._throwError();
-    }
-
-    async canEditDoc(document){
-        let doc = await dbDocuments.getDocument(document);
-        if(this._isAdmin()){
-            return true;
-        }
-        if(this._isCompanyAdmin()){
-            if(doc && doc.updatedBy && doc.updatedBy.companyId === this.companyId ){
-                return true;
-            }
-        }
-        this._throwError();
-    }
-
-    canCreateDoc(document){
-        if(this._isAdmin()){
-            return true;
-        }
-        if(this._isCompanyAdmin()){
-            if(document.updatedBy.companyId === this.companyId && document.documentType === 'company'){
-                return true;
-            }
-        }
-        this._throwError();
-    }
-
     canModifyUser(newUser){
         if(newUser.userId === this.userId){
             return true;

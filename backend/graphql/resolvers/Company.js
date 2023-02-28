@@ -1,4 +1,4 @@
-import uuid from 'uuid/v1.js';
+import { v4 as uuid } from 'uuid';
 import { UserInputError } from 'apollo-server-lambda';
 import * as dbCompanies from '../../dynamo/Companies.js';
 import * as dbUserIdentity from '../../dynamo/UserIdentity.js';

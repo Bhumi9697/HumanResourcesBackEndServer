@@ -1,6 +1,6 @@
 import * as dbActivityLog from '../dynamo/ActivityLog.js';
 import * as dbUsers from '../dynamo/Users.js';
-import uuid from 'uuid/v1.js';
+import { v4 as uuid } from 'uuid';
 import * as emailHelper from './emailHelper.js';
 
 const siteURL = 'https://contoso.com';

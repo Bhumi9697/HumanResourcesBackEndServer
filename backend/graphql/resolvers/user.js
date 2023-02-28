@@ -1,5 +1,5 @@
 import {AuthenticationError, UserInputError } from 'apollo-server-lambda';
-import uuid from 'uuid/v1.js';
+import { v4 as uuid } from 'uuid';
 import * as dbUsers from '../../dynamo/Users.js';
 import * as dbUserIdentity from '../../dynamo/UserIdentity.js';
 import * as dbCompanyLocations from '../../dynamo/CompanyLocation.js';
@@ -11,7 +11,6 @@ import accessControl from '../../libs/accessControl.js';
 export default {
   Query: {
     me: (_,args,context) => {
-      console.log('Query Me context',context);
       if(!context.user){
         throw new AuthenticationError('unauthorized');
         return;

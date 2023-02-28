@@ -81,8 +81,8 @@ export function updateUser(args) {
   const params = {
     TableName,
     Key:{
-      userId: args.userId,
-      companyId: args.companyId
+      userId: args.companyId,
+      companyId: args.userId
     },
     ConditionExpression:'userId = :userId and companyId = :companyId', //Only update item if exists.
     ExpressionAttributeValues: {':userId':args.userId, ':companyId':args.companyId},
@@ -99,7 +99,6 @@ export function updateUser(args) {
   }
 
   db.formatUpdate(params,updateArgs);
-  console.log('Update User params ', params);
   return db.updateItem(params, args);
 }
 

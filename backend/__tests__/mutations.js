@@ -1,6 +1,5 @@
 const gql = require('graphql-tag');
 
-
 export const CREATE_ADMIN = gql`
 mutation createUser($email:String!){
   createUser(userRole:SUPERADMIN, companyId:"someCompany", email:$email, first:"Jane", last:"John"){
@@ -11,6 +10,15 @@ mutation createUser($email:String!){
     first
   }
 }`
+
+export const CREATE_COMPANY_AND_OWNER = gql`
+mutation createCompanyAndOwner($email:String!, $companyName:String!){
+  createCompanyAndOwner(email: $email, companyName: $companyName){
+    companyName
+    companyId
+  }
+}
+`
 
 export const CREATE_EMPLOYEE = gql`
 mutation createUser($email:String!){
@@ -23,47 +31,11 @@ mutation createUser($email:String!){
   }
 }`
 
-export const CREATE_ADMIN_DOCUMENT = gql`
-  mutation{
-    createAdminDocument(documentName:"its a doc" ,documentType:NATIONAL, description:"test", category:HRLAWS){
-      documentId
-    }
-  }`
-
-  export const CREATE_EMPLOYEE_DOCUMENT = gql`
-    mutation{
-      createEmployeeDocument(userId:"szavio@gmail.com",companyId:"someCompany",documentName:"test doc",description:"ignore me", documentType:IDPROOF){
-        userDocId
-        companyId
-      }
-    }
-`
-
-export const UPDATE_EMPLOYEE_DOCUMENT = gql`
-  mutation{
-    updateEmployeeDocument(userDocId:"szavio@gmail.com$30be39a0-fd52-11ea-9200-03733601f510",companyId:"someCompany",description:"updated"){
-      description
-      documentType
-      documentName
-    }
+export const UPDATE_USER = gql`
+mutation updateUserFirstAndLastName($userId:String!,$companyId:String!,$first:String!,$last:String!){
+  updateUser(userId: $userId, companyId:$companyId, first:$first, last:$last){
+    userId
+    last
+    first
   }
-`
-
-export const UPDATE_ADMIN_DOCUMENT = gql`
-  mutation{
-    updateDocument(documentId:"e8467730-fd4e-11ea-9b75-1955b13574d9",documentType:NATIONAL, description:"yup"){
-      description
-      documentType
-      documentName
-  }
-}
-`
-
-export const CREATE_DOCUMENT_CATEGORY = gql`
-  mutation createDocumentCategory($categoryText:String!){
-    createDocumentCategory(companyId:"someCompany",categoryText:$categoryText){
-      categoryText
-      companyId
-  }
-}
-`
+}`

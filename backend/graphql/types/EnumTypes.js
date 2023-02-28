@@ -36,20 +36,10 @@ enum UserRoleEnum {
   ACCOUNTMANAGER
 }
 
-enum DocumentTypeEnum {
-  CITY
-  COMPANY
-  NATIONAL
-  STATE
-}
-
 enum ActionTypeEnum {
-  USERDOCUMENTADDED
   UPLOADNEEDED
   USERSTATUSCHANGE
-  USERDOCUMENTDELETED
   EMPLOYEEADDED
-  DOCUMENTDELETED
 }
 
 enum EmploymentStatusEnum {

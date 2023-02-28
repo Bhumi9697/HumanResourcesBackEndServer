@@ -30,17 +30,9 @@ export default {
     SUPERADMIN:'superadmin',
     ACCOUNTMANAGER:'accountmanager'
   },
-  DocumentTypeEnum:{
-    CITY:'city',
-    NATIONAL:'national',
-    STATE:'state',
-    COMPANY:'company'
-  },
   ActionTypeEnum:{
-    USERDOCUMENTADDED:'userdocumentadded',
     UPLOADNEEDED:'uploadneeded',
     USERSTATUSCHANGE:'userstatuschange',
-    DOCUMENTDELETED:'documentdeleted',
     EMPLOYEEADDED:'employeeadded'
   },
   EmploymentStatusEnum:{

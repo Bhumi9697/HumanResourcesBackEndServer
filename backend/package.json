@@ -46,6 +46,6 @@
     "serverless": "^3.27.0",
     "serverless-dynamodb-client": "0.0.2",
     "serverless-dynamodb-local": "^0.2.10",
-    "uuid": "^3.3.3"
+    "uuid": "9.0.0"
   }
 }

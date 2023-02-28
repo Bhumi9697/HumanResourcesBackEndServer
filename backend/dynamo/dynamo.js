@@ -10,7 +10,6 @@ const dynamoDb = process.env.IS_OFFLINE ? new AWS.DynamoDB.DocumentClient({
 export function formatUpdate(params,args){
   for (let propKey in args) {
       if(args[propKey] != null){
-        console.log('setting prop:',propKey);
         params.ExpressionAttributeValues[`:${propKey}`] = args[propKey];
         params.ExpressionAttributeNames[`#${propKey}`] = `${propKey}`;
         params.UpdateExpression += `#${propKey} = :${propKey}, `;
@@ -20,7 +19,6 @@ export function formatUpdate(params,args){
     delete params.ExpressionAttributeNames;
   }
   params.UpdateExpression = params.UpdateExpression.slice(0, -2);
-  console.log('formatted params',params);
   return params;
 }
 

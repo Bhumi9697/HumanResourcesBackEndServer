@@ -40,7 +40,6 @@ export function updateUserIdentity(args) {
   let updateArgs = {...args};
   delete updateArgs.userId;
   db.formatUpdate(params,updateArgs);
-  console.log('UserIdentity params ', params);
   return db.updateItem(params, updateArgs);
 }
 

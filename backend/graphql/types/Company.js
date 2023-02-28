@@ -32,7 +32,6 @@ export default `
   }
 
   type Mutation {
-
     uploadCompanyLogo(
       companyId: String!
       filename: String!

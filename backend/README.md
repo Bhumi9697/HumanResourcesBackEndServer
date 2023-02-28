@@ -31,9 +31,9 @@ If all went well, you'll see something like this:
 ```
 Offline [http for lambda] listening on http://localhost:3002
 Function names exposed for local invocation by aws-sdk:
-           * graphql: cavness-api-dev-graphql
-           * customMessage: cavness-api-dev-customMessage
-           * auth: cavness-api-dev-auth
+           * graphql: api-dev-graphql
+           * customMessage: api-dev-customMessage
+           * auth: api-dev-auth
 
    ┌───────────────────────────────────────────────────────────────────────────┐
    │                                                                           │
@@ -46,6 +46,36 @@ Server ready: http://localhost:3000 🚀
 ```
 
 Now you can access the graphql endpoint at http://localhost:3000/graphql. If you access the endpoint with a browser, you'll see a graphql client. You can also use any HTTP client, like Postman, to make HTTP requests to that endpoint.
+
+# Examples
+
+Here is a simple GraphQL query to retrieve the list of users:
+
+```
+{
+    listUsers{
+        userId
+        email
+        first
+        last
+    }
+}
+```
+
+Here is a simple query to create a new user:
+
+```
+mutation {
+  createUser(userRole:SUPERADMIN, companyId:"Company123", email: "you@company.123", first:"Jane", last:"John"){
+    userId
+    userRole
+    state
+    last
+    first
+  }
+}
+
+```
 
 # Project Structure
 <pre>

@@ -3,7 +3,7 @@ import * as dbUsers from '../dynamo/Users.js';
 import uuid from 'uuid/v1.js';
 import * as emailHelper from './emailHelper.js';
 
-const siteURL = 'https://cavnesshr.com';
+const siteURL = 'https://contoso.com';
 
 async function addActivity (args) {
   let timestamp = Date.now();
@@ -46,10 +46,8 @@ async function getCompanyAdminEmails(companyId){
   // admins.map(item => {
   //   emailList.push(item.email);
   // });
-  console.log('email list',emailList);
   return emailList;
 }
-
 
 export async function employeeAdded (args) {
   let name = args.first && args.last ? args.first + ' ' + args.last : args.email;
@@ -57,7 +55,7 @@ export async function employeeAdded (args) {
     userId: args.userId,
     companyId: args.companyId
   } = args;
-  newActivity.textBody = name + ' was added to CavnessHR';
+  newActivity.textBody = name + ' was added';
   newActivity.type = 'company';
   newActivity.link = siteURL + '/employees/view/' + args.userId + '?companyId=' + args.companyId;
   newActivity.action = 'employeeadded';

@@ -144,7 +144,6 @@ export default `
       industry: String
       companyLocations: [LocationInput]
       phone: String
-      password: String!
     ): String
 
     updateUser(

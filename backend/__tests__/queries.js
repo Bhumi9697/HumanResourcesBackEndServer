@@ -89,24 +89,15 @@ export const LIST_COMPANIES = gql`{
   }
 }`;
 
-export const SCAN_PERMISSIONS = gql`
+export const GET_USER = gql`
 {
-	scanPermissions{
- 		userDocId
-    documentName
-    documentKey
-    createdOn
-    description
-    filename
-
-    updatedBy{
-      userId
-      first
-      last
-    }
-    status
-    documentUrl
-	}
+  getUser(userId:"user@gamil.com" companyId:"some"){
+    userId
+    userRole
+    first
+    last
+    contactPhone
+  }
 }`;
 
 export const ME = gql`
@@ -122,7 +113,7 @@ export const ME = gql`
 
 export const COMPANY_USERS = gql`
 {
-  companyUsers(companyId:"5a198de0-7355-11ea-a6e4-335f2e84501a"){
+  companyUsers(companyId:"5a198de0-7355-11ea-a6e4-335f2e84501a") {
     userId
     userRole
     first

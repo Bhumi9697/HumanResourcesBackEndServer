@@ -44,8 +44,6 @@ class AccessControl {
     }
 
     _isSelfOwned(resource){
-        console.log('this userId:',this.userId);
-        console.log('resource:',resource);
         if(resource && resource.userDocId){
            return this.userId === this._getUserId(resource.userDocId);
         }

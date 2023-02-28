@@ -1,8 +1,8 @@
 {
-  "name": "cavness-serverless",
+  "name": "serverless",
   "type": "module",
   "version": "1.1.1",
-  "description": "A Node.js starter for the Serverless Framework with async/await and unit test support",
+  "description": "A backend for the service",
   "main": "handler.js",
   "scripts": {
     "test": "yarn jest --json --outputFile test-output.json",
@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.18.6",
-    "amazon-cognito-identity-js": "^3.2.4",
     "apollo-server-lambda": "^2.9.16",
     "aws-xray-sdk": "^2.5.0",
     "file-loader": "^5.0.2",
@@ -45,7 +44,6 @@
     "regenerator-runtime": "^0.13.5",
     "request": "^2.88.2",
     "serverless": "^3.27.0",
-    "serverless-cognito-add-custom-attributes": "^0.3.0",
     "serverless-dynamodb-client": "0.0.2",
     "serverless-dynamodb-local": "^0.2.10",
     "uuid": "^3.3.3"

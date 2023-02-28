@@ -56,19 +56,6 @@ export default {
         ...args
       };
 
-      // ====================================================================
-      // Don't really add to the cognito user pool:wa
-      // await userPool.addUserToPool(userArgs).catch(
-      //   (err) => {
-      //     console.log('cognito err',err.message);
-      //     throw new UserInputError(err.message);
-      //   }
-      // );
-
-      if(['superadmin','accountmanager'].indexOf(args.userRole) != -1){
-        args.companyId = 'cavness';
-      }
-
       let identityArgs = {
          userId:userId,
          companyId:args.companyId,
@@ -83,7 +70,6 @@ export default {
       promises.push(dbUsers.create(userArgs));
       ActivityHelper.employeeAdded(userArgs);
       return Promise.all(promises).then(function(values) {
-        console.log('all promises:',values);
          return values[1];
       });
     },
@@ -110,15 +96,7 @@ export default {
          companyId:companyId,
          userRole:'owner',
          userStatus:'active',
-         password: args.password
       };
-
-      // await userPool.userSignUp(userArgs).catch(
-      //   (err) => {
-      //     console.log('cognito err',err.message);
-      //     throw new UserInputError(err.message);
-      //   }
-      // );
 
       let identityArgs = {
          userId:userId,
@@ -144,7 +122,6 @@ export default {
 
       let promises = [];
       promises.push(dbUserIdentity.create(identityArgs));
-      delete userArgs.password;
       promises.push(dbUsers.create(userArgs));
       if(args.companyLocations && args.companyLocations.length > 0){
         let headquarters = {
@@ -165,7 +142,6 @@ export default {
       promises.push(dbCompanies.create(companyArgs));
 
       return Promise.all(promises).then(function(values) {
-        console.log('all promises:',values);
          return JSON.stringify(values);
       });
     },
@@ -184,15 +160,12 @@ export default {
       if(args.userStatus){
         if(args.userStatus == 'inactive'){
           console.log('disabling user');
-          //promises.push(userPool.disableUser(args));
         }
         if(args.userStatus == 'active'){
           console.log('enabling user');
-          // promises.push(userPool.enableUser(args));
         }
       }
       return Promise.all(promises).then(function(values) {
-        console.log('all promises:',values);
          return values[0];
       });
     },

@@ -3,7 +3,7 @@ const gql = require('graphql-tag');
 
 export const CREATE_ADMIN = gql`
 mutation createUser($email:String!){
-  createUser(userRole:SUPERADMIN, companyId:"cavness", email:$email, first:"Jane", last:"John"){
+  createUser(userRole:SUPERADMIN, companyId:"someCompany", email:$email, first:"Jane", last:"John"){
     userId
     userRole
     state
@@ -32,7 +32,7 @@ export const CREATE_ADMIN_DOCUMENT = gql`
 
   export const CREATE_EMPLOYEE_DOCUMENT = gql`
     mutation{
-      createEmployeeDocument(userId:"szavio@gmail.com",companyId:"cavness",documentName:"test doc",description:"ignore me", documentType:IDPROOF){
+      createEmployeeDocument(userId:"szavio@gmail.com",companyId:"someCompany",documentName:"test doc",description:"ignore me", documentType:IDPROOF){
         userDocId
         companyId
       }
@@ -41,7 +41,7 @@ export const CREATE_ADMIN_DOCUMENT = gql`
 
 export const UPDATE_EMPLOYEE_DOCUMENT = gql`
   mutation{
-    updateEmployeeDocument(userDocId:"szavio@gmail.com$30be39a0-fd52-11ea-9200-03733601f510",companyId:"cavness",description:"updated"){
+    updateEmployeeDocument(userDocId:"szavio@gmail.com$30be39a0-fd52-11ea-9200-03733601f510",companyId:"someCompany",description:"updated"){
       description
       documentType
       documentName
@@ -61,7 +61,7 @@ export const UPDATE_ADMIN_DOCUMENT = gql`
 
 export const CREATE_DOCUMENT_CATEGORY = gql`
   mutation createDocumentCategory($categoryText:String!){
-    createDocumentCategory(companyId:"cavness",categoryText:$categoryText){
+    createDocumentCategory(companyId:"someCompany",categoryText:$categoryText){
       categoryText
       companyId
   }

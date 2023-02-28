@@ -1,0 +1,25 @@
+
+
+
+- GraphQL queries to read data.
+Create a new graphql data to query something.
+Maybe add it to the tests?
+
+
+- GraphQL queries to mutate data.
+Create a new graphql data to insert something into the DB?
+Add it to the unit tests?
+
+
+
+- Apollo
+- GraphQL enums and GraphQL strong types.
+Add a new type?
+Maybe something like `Document`?
+
+
+- Write basic JavaScript code.
+- JavaScript async code.
+- Navigate a code base, read code, debug and fix bugs.
+- Basic usage of yarn to install dependencies and run scripts
+- Basic usage of git to clone, commit and push changes.

@@ -1,15 +1,15 @@
 trigger: none
 
 parameters:
-- name: image
+- name: devMatchSubmissionId
   displayName: DevMatch Submission ID
   type: string
-  default: NULL
+  default: 
 
-- name: repoUrl
+- name: devMatchRepoUrl
   displayName: A DevMatch git repo
   type: string
-  default: NULL
+  default: 
 
 pool:
   vmImage: ubuntu-latest
@@ -19,6 +19,13 @@ variables:
   AWS_SECRET_ACCESS_KEY: PASTE_YOUR_SECRET_KEY_HERE
 
 steps:
+- task: CmdLine@2
+  inputs:
+    script: |
+      echo devmatch identifier is ${{ inputs.devMatchSubmissionId }}
+  displayName: "devMatchSubmissionId: ${{ parameters.devMatchSubmissionId }}"
+  condition: eq(parameters.devMatchSubmissionId, '')
+  
 - task: NodeTool@0
   inputs:
     versionSpec: '16.x'

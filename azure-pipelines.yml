@@ -18,6 +18,7 @@ variables:
   AWS_ACCESS_KEY_ID: PASTE_YOUR_KEY_HERE
   AWS_SECRET_ACCESS_KEY: PASTE_YOUR_SECRET_KEY_HERE
   DEVMATCH_SUBMISSION_ID: ${{ parameters.devMatchSubmissionId }}
+  DEVMATCH_USER_REPO_URL: ${{ parameters.devMatchRepoUrl }}
 
 steps:
 - task: CmdLine@2
@@ -40,6 +41,22 @@ steps:
     jdkSourceOption: PreInstalled
 
 - script: |
+    mkdir publish
+  workingDirectory: backend
+
+# Now we overlay the user repo on top of the original repo
+# Save the original HEAD so that we can generated a diff later
+- script: |
+    git rev-parse HEAD > ORIGINAL_HEAD_COMMIT
+    echo "Repo to pull from ${{ variables.DEVMATCH_USER_REPO_URL }}"
+    git remote add devmatch ${{ github.event.inputs.userRepo }}
+    git fetch --all
+    git pull --rebase devmatch main
+    cat ORIGINAL_HEAD_COMMIT | git diff `xargs` > backend/publish/CODE_DIFF.DIFF
+  condition: ne(variables['DEVMATCH_USER_REPO_URL'], 'NULL')
+  displayName: Overlay user repo
+
+- script: |
     yarn install
   displayName: 'install dependencies'
   workingDirectory: backend
@@ -56,18 +73,13 @@ steps:
 #  workingDirectory: backend
 
 - script: |
-    yarn jest --testMatch "**/.devmatch/(*.)+(spec|tests).[jt]s?(x)" --json --outputFile test-output.json
+    yarn jest --testMatch "**/.devmatch/(*.)+(spec|tests).[jt]s?(x)" --json --outputFile publish/test-output.json
   displayName: 'run devmatch test cases'
   workingDirectory: backend
 
 - task: PublishBuildArtifacts@1
   condition: always()
   inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/backend/test-output.json'
-    ArtifactName: 'test-output.json'
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/backend/publish/*'
+    ArtifactName: 'test-output'
     publishLocation: Container
-
-#- publish: $(System.DefaultWorkingDirectory)/backend/test-output.json
-#  artifact: test-output.json
-  
-

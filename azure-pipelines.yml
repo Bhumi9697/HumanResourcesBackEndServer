@@ -81,6 +81,6 @@ steps:
 - task: PublishBuildArtifacts@1
   condition: always()
   inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/backend/publish/*'
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/backend/publish'
     ArtifactName: 'test-output'
     publishLocation: Container

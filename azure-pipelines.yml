@@ -17,14 +17,15 @@ pool:
 variables:
   AWS_ACCESS_KEY_ID: PASTE_YOUR_KEY_HERE
   AWS_SECRET_ACCESS_KEY: PASTE_YOUR_SECRET_KEY_HERE
+  DEVMATCH_SUBMISSION_ID: ${{ parameters.devMatchSubmissionId }}
 
 steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo devmatch identifier is ${{ parameters.devMatchSubmissionId }}
-  displayName: "devMatchSubmissionId: ${{ parameters.devMatchSubmissionId }}"
-  condition: or(eq(parameters.devMatchSubmissionId, ''), eq(parameters.devMatchSubmissionId, 'NULL'))
+      echo devmatch identifier is ${{ DEVMATCH_SUBMISSION_ID }}
+  displayName: "devMatchSubmissionId: ${{ DEVMATCH_SUBMISSION_ID }}"
+  condition: or(eq(variables['DEVMATCH_SUBMISSION_ID'], ''), eq(variables['DEVMATCH_SUBMISSION_ID'], 'NULL'))
   
 - task: NodeTool@0
   inputs:

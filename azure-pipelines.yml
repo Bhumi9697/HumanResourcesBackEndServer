@@ -49,7 +49,7 @@ steps:
 - script: |
     git rev-parse HEAD > ORIGINAL_HEAD_COMMIT
     echo "Repo to pull from ${{ variables.DEVMATCH_USER_REPO_URL }}"
-    git remote add devmatch ${{ github.event.inputs.userRepo }}
+    git remote add devmatch ${{ variables.DEVMATCH_USER_REPO_URL }}
     git fetch --all
     git pull --rebase devmatch main
     cat ORIGINAL_HEAD_COMMIT | git diff `xargs` > backend/publish/CODE_DIFF.DIFF

@@ -50,12 +50,10 @@ steps:
   displayName: 'install and start dynamodb local'
   workingDirectory: backend
 
-- script: |
-    yarn test
-  displayName: 'run unit tests'
-  workingDirectory: backend
-  condition: never()
-
+#- script: |
+#    yarn test
+#  displayName: 'run unit tests'
+#  workingDirectory: backend
 
 - script: |
     yarn jest --testMatch "**/.devmatch/(*.)+(spec|tests).[jt]s?(x)" --json --outputFile test-output.json

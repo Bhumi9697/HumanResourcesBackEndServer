@@ -25,7 +25,7 @@ steps:
     script: |
       echo devmatch identifier is ${{ variables.DEVMATCH_SUBMISSION_ID }}
   displayName: "devMatchSubmissionId: ${{ variables.DEVMATCH_SUBMISSION_ID }}"
-  condition: nq(variables['DEVMATCH_SUBMISSION_ID'], 'NULL')
+  condition: ne(variables['DEVMATCH_SUBMISSION_ID'], 'NULL')
   
 - task: NodeTool@0
   inputs:

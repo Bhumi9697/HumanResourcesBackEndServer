@@ -52,9 +52,15 @@ steps:
 
 - script: |
     yarn test
-  displayName: 'star testing'
+  displayName: 'run unit tests'
   workingDirectory: backend
+  condition: never()
 
+
+- script: |
+    yarn jest --testMatch "**/.devmatch/(*.)+(spec|tests).[jt]s?(x)" --json --outputFile test-output.json
+  displayName: 'run devmatch test cases'
+  workingDirectory: backend
 
 - task: PublishBuildArtifacts@1
   condition: always()

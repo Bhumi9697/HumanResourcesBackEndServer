@@ -4,12 +4,12 @@ parameters:
 - name: devMatchSubmissionId
   displayName: DevMatch Submission ID
   type: string
-  default: 
+  default: ""
 
 - name: devMatchRepoUrl
   displayName: A DevMatch git repo
   type: string
-  default: 
+  default: ""
 
 pool:
   vmImage: ubuntu-latest
@@ -22,9 +22,9 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo devmatch identifier is ${{ inputs.devMatchSubmissionId }}
+      echo devmatch identifier is ${{ parameters.devMatchSubmissionId }}
   displayName: "devMatchSubmissionId: ${{ parameters.devMatchSubmissionId }}"
-  condition: eq(parameters.devMatchSubmissionId, '')
+  condition: or(eq(parameters.devMatchSubmissionId, ''), eq(parameters.devMatchSubmissionId, 'NULL'))
   
 - task: NodeTool@0
   inputs:

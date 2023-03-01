@@ -41,8 +41,7 @@ steps:
     jdkSourceOption: PreInstalled
 
 - script: |
-    mkdir publish
-  workingDirectory: backend
+    mkdir $(System.DefaultWorkingDirectory)/backend/publish
 
 # Now we overlay the user repo on top of the original repo
 # Save the original HEAD so that we can generated a diff later

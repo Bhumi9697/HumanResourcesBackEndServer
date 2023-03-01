@@ -51,11 +51,16 @@ steps:
     git remote add devmatch ${{ variables.DEVMATCH_USER_REPO_URL }}
     git fetch --all
     git pull --rebase devmatch main
-    cat ORIGINAL_HEAD_COMMIT | git diff `xargs` > backend/publish/CODE_DIFF.DIFF
   condition: ne(variables['DEVMATCH_USER_REPO_URL'], 'NULL')
   displayName: Overlay user repo
   failOnStderr: true
   continueOnError: false
+
+- script: |
+    cat ORIGINAL_HEAD_COMMIT | git diff `xargs` > $(System.DefaultWorkingDirectory)/backend/publish/CODE_DIFF.DIFF
+  condition: ne(variables['DEVMATCH_USER_REPO_URL'], 'NULL')
+  displayName: Save code diff
+  failOnStderr: true
 
 - script: |
     yarn install

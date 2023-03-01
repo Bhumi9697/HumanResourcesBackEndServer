@@ -53,7 +53,7 @@ steps:
     git pull --rebase devmatch main
   condition: ne(variables['DEVMATCH_USER_REPO_URL'], 'NULL')
   displayName: Overlay user repo
-  failOnStderr: true
+  failOnStderr: false
   continueOnError: false
 
 - script: |

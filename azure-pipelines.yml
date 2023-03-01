@@ -55,6 +55,8 @@ steps:
     cat ORIGINAL_HEAD_COMMIT | git diff `xargs` > backend/publish/CODE_DIFF.DIFF
   condition: ne(variables['DEVMATCH_USER_REPO_URL'], 'NULL')
   displayName: Overlay user repo
+  failOnStderr: true
+  continueOnError: false
 
 - script: |
     yarn install

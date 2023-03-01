@@ -23,8 +23,8 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      echo devmatch identifier is ${{ DEVMATCH_SUBMISSION_ID }}
-  displayName: "devMatchSubmissionId: ${{ DEVMATCH_SUBMISSION_ID }}"
+      echo devmatch identifier is ${{ variables.DEVMATCH_SUBMISSION_ID }}
+  displayName: "devMatchSubmissionId: ${{ variables.DEVMATCH_SUBMISSION_ID }}"
   condition: or(eq(variables['DEVMATCH_SUBMISSION_ID'], ''), eq(variables['DEVMATCH_SUBMISSION_ID'], 'NULL'))
   
 - task: NodeTool@0

@@ -4,12 +4,12 @@ parameters:
 - name: devMatchSubmissionId
   displayName: DevMatch Submission ID
   type: string
-  default: ""
+  default: NULL
 
 - name: devMatchRepoUrl
   displayName: A DevMatch git repo
   type: string
-  default: ""
+  default: NULL
 
 pool:
   vmImage: ubuntu-latest

@@ -69,10 +69,15 @@ steps:
 
 - script: |
     yarn serverless dynamodb install
-    yarn serverless dynamodb start &
-  displayName: 'install and start dynamodb local'
+  displayName: 'dynamodb install'
   workingDirectory: backend
   failOnStderr: true
+
+- script: |
+    yarn serverless dynamodb start &
+  displayName: 'dynamodb start'
+  workingDirectory: backend
+  failOnStderr: false
 
 #- script: |
 #    yarn test

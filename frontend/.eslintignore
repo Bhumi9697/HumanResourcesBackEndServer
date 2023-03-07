@@ -1,6 +1,0 @@
-models
-src/models
-node_modules
-**/out/*
-**/.next/*
-jsconfig.json

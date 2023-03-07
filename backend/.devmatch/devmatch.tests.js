@@ -1,5 +1,6 @@
 import "regenerator-runtime/runtime.js";
 import { v4 as uuidv4 } from 'uuid';
+const gql = require('graphql-tag');
 
 import {
   LIST_USERS,
@@ -114,30 +115,41 @@ describe("DEVMATCH_TEST_CASES", () => {
     //
     const email = `${uniqueId}@contoso.com`;
     const companyName = `${uniqueId} Incorporated`;
+
+    const CREATE_COMPANY_AND_OWNER = gql`
+    mutation createCompanyAndOwner($email:String!, $companyName:String!, $employeeCount:Int){
+      createCompanyAndOwner(email: $email, companyName: $companyName, employeeCount: $employeeCount){
+        companyName
+        companyId
+        employeeCount
+      }
+    } `
+
     let creationResult = await mutate({
       mutation: CREATE_COMPANY_AND_OWNER,
-      variables: { email: email, companyName: companyName },
+      variables: { email: email, companyName: companyName, employeeCount: 123 },
     });
+    
     // Internally, the user email beecomes the ID
-    const companyId = creationResult.companyId;
+    const companyId = creationResult.data.createCompanyAndOwner.companyId;
+    expect(creationResult.data.createCompanyAndOwner.employeeCount).not.to.be.null;
+    expect(creationResult.data.createCompanyAndOwner.employeeCount).to.equal(123)
 
     //
     // Update the field
     //
     const UPDATE_COMPANY = `
-      mutation updateCompany($companyId:String!,$employeeCount:Number!){
+      mutation updateCompany($companyId:String!,$employeeCount:Int!){
         updateCompany(companyId:$companyId, employeeCount:$employeeCount){
           companyId
+          employeeCount
         }
       }`
-    //const response2 = await query({ query: LIST_USERS });
-    //expect(response2.data.listUsers).to.be.an("array");
-    //expect(response2.data.listUsers).to.have.length(oldListSize + 1)
-    //const foundElement = response2.data.listUsers.find((el)=> el.userId === userId)
-    //expect(foundElement).to.not.be.null;
-
-    //
-    // Request the company again to see if it contains the data we want
-    //
+    let updateResult = await mutate({
+      mutation: UPDATE_COMPANY,
+      variables: { companyId: companyId, employeeCount: 512 },
+    });
+    expect(updateResult.data.updateCompany.employeeCount).not.to.be.null;
+    expect(updateResult.data.updateCompany.employeeCount).to.equal(512)
   });
 })

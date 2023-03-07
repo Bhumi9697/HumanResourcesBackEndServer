@@ -16,13 +16,14 @@ To install the project dependencies do the following in the backend directory:
 yarn install
 ```
 
-## Running the service
+## Install the local DynamoDB service
 This project, uses a local instance of DynamoDB. Please make sure you have Java installed and in your path. Once you do, install the DynamoDB with:
 
 ```
 yarn serverless dynamodb install
 ```
 
+## Run the service
 Now that the DB is installed, you can run the service with:
 <pre><code>yarn start</code></pre>
 
@@ -47,7 +48,20 @@ Server ready: http://localhost:3000 🚀
 
 Now you can access the graphql endpoint at http://localhost:3000/graphql. If you access the endpoint with a browser, you'll see a graphql client. You can also use any HTTP client, like Postman, to make HTTP requests to that endpoint.
 
-# Examples
+## Run the unit tests
+Make sure you are running the database.
+
+```
+yarn db
+```
+
+In a separate window, run the unit tests.
+
+```
+yarn test
+```
+
+## Examples
 
 Here is a simple GraphQL query to retrieve the list of users:
 

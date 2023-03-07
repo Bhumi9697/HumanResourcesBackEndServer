@@ -72,6 +72,7 @@ steps:
     yarn serverless dynamodb start &
   displayName: 'install and start dynamodb local'
   workingDirectory: backend
+  failOnStderr: true
 
 #- script: |
 #    yarn test

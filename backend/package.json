@@ -45,7 +45,7 @@
     "request": "^2.88.2",
     "serverless": "^3.27.0",
     "serverless-dynamodb-client": "0.0.2",
-    "serverless-dynamodb-local": "^0.2.10",
+    "serverless-dynamodb-local": "https://github.com/eheyder/serverless-dynamodb-local.git#v1",
     "uuid": "9.0.0"
   }
 }

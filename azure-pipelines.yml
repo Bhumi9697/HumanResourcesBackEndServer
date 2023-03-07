@@ -71,7 +71,7 @@ steps:
     yarn serverless dynamodb install
   displayName: 'dynamodb install'
   workingDirectory: backend
-  failOnStderr: true
+  failOnStderr: false
 
 - script: |
     yarn serverless dynamodb start &

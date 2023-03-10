@@ -57,7 +57,8 @@ steps:
   continueOnError: false
 
 - script: |
-    cat ORIGINAL_HEAD_COMMIT | git diff `xargs` > $(System.DefaultWorkingDirectory)/backend/publish/CODE_DIFF.DIFF
+    cat ORIGINAL_HEAD_COMMIT 
+    cat ORIGINAL_HEAD_COMMIT | git diff `xargs` > $(System.DefaultWorkingDirectory)/backend/publish/CODE-DIFF.DIFF
   condition: ne(variables['DEVMATCH_USER_REPO_URL'], 'NULL')
   displayName: Save code diff
   failOnStderr: true

@@ -15,8 +15,6 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  AWS_ACCESS_KEY_ID: PASTE_YOUR_KEY_HERE
-  AWS_SECRET_ACCESS_KEY: PASTE_YOUR_SECRET_KEY_HERE
   DEVMATCH_SUBMISSION_ID: ${{ parameters.devMatchSubmissionId }}
   DEVMATCH_USER_REPO_URL: ${{ parameters.devMatchRepoUrl }}
 
@@ -66,6 +64,12 @@ steps:
 - script: |
     yarn install
   displayName: 'install dependencies'
+  workingDirectory: backend
+
+- script: |
+     sed -i 's|MOCK_ACCESS_KEY_ID|AAAAAAAAAAAAAAAAAAAA|g' ./node_modules/serverless-dynamodb-local/index.js
+     sed -i 's|MOCK_SECRET_ACCESS_KEY|MOCK_SECRET_ACCESS_KEY__________________|g' ./node_modules/serverless-dynamodb-local/index.js
+  displayName: 'patch serverless-dynamodb-local'
   workingDirectory: backend
 
 - script: |

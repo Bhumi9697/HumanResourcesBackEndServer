@@ -67,12 +67,6 @@ steps:
   workingDirectory: backend
 
 - script: |
-     sed -i 's|MOCK_ACCESS_KEY_ID|AAAAAAAAAAAAAAAAAAAA|g' ./node_modules/serverless-dynamodb-local/index.js
-     sed -i 's|MOCK_SECRET_ACCESS_KEY|MOCK_SECRET_ACCESS_KEY__________________|g' ./node_modules/serverless-dynamodb-local/index.js
-  displayName: 'patch serverless-dynamodb-local'
-  workingDirectory: backend
-
-- script: |
     yarn serverless dynamodb install
   displayName: 'dynamodb install'
   workingDirectory: backend

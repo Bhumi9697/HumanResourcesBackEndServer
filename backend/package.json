@@ -7,7 +7,8 @@
   "scripts": {
     "test": "yarn jest --json --outputFile test-output.json",
     "db": "yarn serverless dynamodb start",
-    "start": "yarn serverless offline start --noPrependStageInUrl"
+    "start": "yarn serverless offline start --noPrependStageInUrl",
+    "postinstall": "node patch-dependency.cjs"
   },
   "author": "",
   "license": "MIT",

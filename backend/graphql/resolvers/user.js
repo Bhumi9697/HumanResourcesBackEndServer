@@ -144,30 +144,32 @@ export default {
          return JSON.stringify(values);
       });
     },
-    updateUser: async (_, args) => {
+  updateUser: async (_, args) => {
+  if (args.employeeId) {
+    let employeeId = await dbUsers.getUserByEmployeeId(args);
+    if (employeeId.length > 0 && employeeId[0].userId !== args.userId) {
+      throw new UserInputError("User with that employeeId already exists");
+    }
+  }
 
-      if(args.employeeId){
-        let employeeId = await dbUsers.getUserByEmployeeId(args);
-        if(employeeId.length > 0 && employeeId[0].userId != args.userId){
-          throw new UserInputError("User with that employeeId already exists");
-        }
-      }
+  let promises = [];
+  promises.push(dbUsers.updateUser(args)); // Removed unnecessary spread operator
+  promises.push(dbUserIdentity.updateUserIdentity(args)); // Removed unnecessary spread operator
 
-      let promises = [];
-      promises.push(dbUsers.updateUser({...args}));
-      promises.push(dbUserIdentity.updateUserIdentity({...args}));
-      if(args.userStatus){
-        if(args.userStatus == 'inactive'){
-          console.log('disabling user');
-        }
-        if(args.userStatus == 'active'){
-          console.log('enabling user');
-        }
-      }
-      return Promise.all(promises).then(function(values) {
-         return values[0];
-      });
-    },
+  if (args.userStatus) {
+    if (args.userStatus === 'inactive') {
+      console.log('disabling user');
+    }
+    if (args.userStatus === 'active') {
+      console.log('enabling user');
+    }
+  }
+
+  return Promise.all(promises).then(function (values) {
+    return values[0];
+  });
+},
+
     deleteUser: (_, args) => {
       dbUserIdentity.deleteUser(args);
       return dbUsers.deleteUser(args);

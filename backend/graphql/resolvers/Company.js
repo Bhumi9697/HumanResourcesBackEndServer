@@ -91,6 +91,7 @@ export default {
 
         let company = await dbCompanies.getCompany(args.companyId);
         if(company){
+          const updatedCompany={...args,employee_count:args.employee_count};
           return dbCompanies.update(args);
         }
         else {

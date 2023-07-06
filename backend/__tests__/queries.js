@@ -1,6 +1,13 @@
 const gql = require('graphql-tag');
 
-export const  LIST_USERS = `
+export const  LIST_USERS = gql`{
+listUsers{
+userId
+first
+last
+email
+}
+}
 `;
 
 export const LIST_COMPANIES = gql`{

@@ -59,6 +59,7 @@ export default {
         effectiveDate: args.effectiveDate,
         email:args.email,
         phone:args.phone,
+        employee_count:args.employee_count
 
       };
 
